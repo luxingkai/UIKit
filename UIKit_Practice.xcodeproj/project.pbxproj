@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		11A4EBA9246646BC004B1009 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A4EBA8246646BC004B1009 /* AppDelegate.m */; };
-		11A4EBAC246646BC004B1009 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A4EBAB246646BC004B1009 /* SceneDelegate.m */; };
 		11A4EBAF246646BC004B1009 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A4EBAE246646BC004B1009 /* ViewController.m */; };
 		11A4EBB2246646BC004B1009 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11A4EBB0246646BC004B1009 /* Main.storyboard */; };
 		11A4EBB5246646BC004B1009 /* UIKit_Practice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 11A4EBB3246646BC004B1009 /* UIKit_Practice.xcdatamodeld */; };
@@ -40,8 +39,6 @@
 		11A4EBA4246646BC004B1009 /* UIKit_Practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKit_Practice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A4EBA7246646BC004B1009 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		11A4EBA8246646BC004B1009 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		11A4EBAA246646BC004B1009 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		11A4EBAB246646BC004B1009 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		11A4EBAD246646BC004B1009 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		11A4EBAE246646BC004B1009 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		11A4EBB1246646BC004B1009 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -108,8 +105,6 @@
 			children = (
 				11A4EBA7246646BC004B1009 /* AppDelegate.h */,
 				11A4EBA8246646BC004B1009 /* AppDelegate.m */,
-				11A4EBAA246646BC004B1009 /* SceneDelegate.h */,
-				11A4EBAB246646BC004B1009 /* SceneDelegate.m */,
 				11A4EBAD246646BC004B1009 /* ViewController.h */,
 				11A4EBAE246646BC004B1009 /* ViewController.m */,
 				11A4EBB0246646BC004B1009 /* Main.storyboard */,
@@ -273,7 +268,6 @@
 				11A4EBBD246646BF004B1009 /* main.m in Sources */,
 				11A4EBAF246646BC004B1009 /* ViewController.m in Sources */,
 				11A4EBA9246646BC004B1009 /* AppDelegate.m in Sources */,
-				11A4EBAC246646BC004B1009 /* SceneDelegate.m in Sources */,
 				11A4EBB5246646BC004B1009 /* UIKit_Practice.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,7 +446,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fxw.UIKit-Practice";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -469,7 +463,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fxw.UIKit-Practice";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
