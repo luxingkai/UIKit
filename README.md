@@ -6,48 +6,44 @@ UIKit框架为你的iOS或tvOS应用提供了必要的基础设施。它提供�
 
 <2>.App架构：UIKit管理你的应用与系统的交互，并为你提供类来管理你的应用的数据和资源。       
     ·App和环境         
-        ·Life Cycle: 管理生命周期、响应app的加载、UIApplication、UIApplicationDeleagte      
-        ·Device Environment: (UIDevice、UIStatusBarManager)        
-        ·Adaptivity: UITraitCollection、UITraitEnvironment）    
-        ·Guided Access: 一组用于在iOS中为引导访问特性添加自定义限制的方法。   
-        ·Architecture : 通过调整应用程序以支持操作系统的后续版本，确保应用程序的行为符合预期。   
+        I: Life Cycle: 管理生命周期、响应app的加载、UIApplication、UIApplicationDeleagte      
+        II: Device Environment: (UIDevice、UIStatusBarManager)        
+        III: Adaptivity: UITraitCollection、UITraitEnvironment）    
+        IV: Guided Access: 一组用于在iOS中为引导访问特性添加自定义限制的方法。   
+        V: Architecture : 通过调整应用程序以支持操作系统的后续版本，确保应用程序的行为符合预期。   
     ·文档、数据和粘贴板    
-        ·文档   
-        ·数据管理   
-        ·粘贴板    
+        I. 文档   
+        II. 数据管理   
+        III. 粘贴板    
     ·资源管理   
-        ·storyboards    
-        ·assets   
-        ·nib files    
+        I. storyboards    
+        II. assets   
+        III. nib files    
     ·App扩展    
-        ·扩展支持   
-        ·文档助手   
-        ·自定义键盘    
+        I. 扩展支持   
+        II. 文档助手   
+        III. 自定义键盘    
     ·内部应用间通信    
-        ·Universal link (使用通用链接链接到您的应用程序内的内容，并安全地共享数据。)   
-        ·User Activities （表示应用程序在某一时刻的状态。）    
-        ·Services (一个抽象类，您可以子类化它来实现特定于应用程序的服务。)   
+        I. Universal link (使用通用链接链接到您的应用程序内的内容，并安全地共享数据。)   
+        II. User Activities （表示应用程序在某一时刻的状态。）    
+        III. Services (一个抽象类，您可以子类化它来实现特定于应用程序的服务。)   
         
 <3>. 用户界面： 视图帮助您在屏幕上显示内容，并方便用户交互;视图控制器帮助你管理视图和界面的结构。    
      · 视图(view)和控制(controls): 展示和交互   
      · 控制器(ViewController)：使用视图控制器管理你的界面，并在你的应用程序的内容周围导航。   
      · 视图布局: 使用堆栈视图自动布局接口的视图。当您需要视图的精确位置时，请使用自动布局。  
      · 自定义展示：     
-          · 暗黑模式(Dark Mode)   
-          · 导航栏展示     
-          · 工具栏展示   
-          · 标签栏(TabBar)   
-          · 共享展示(shared appearance)   
-          · 展示代理    
+          I. 暗黑模式(Dark Mode)   
+          II. 导航栏展示     
+          III. 工具栏展示   
+          IV.  标签栏(TabBar)   
+          V. 共享展示(shared appearance)   
+          VI.  展示代理    
      · 动画及触觉：     
-          · 内容动画 (属性动画及控制器过渡动画及自定义过渡动画)   
-          · 基础物理动画： UIDynamicAniamtor和 UIDynamicBehavior    
-          · 视差效果(Motion Effects)：添加微妙的运动到视图，以提供一个三维外观。  
-          · 触觉反馈: 针对特定类型的事件提供触觉反馈。    
-               ·UIFeedbackGenerator     
-               ·UIImpactFeedbackGenerator   
-               ·UINotificationFeedbackGenerator   
-               ·UISelectionFeedbackGenerator    
+          I. 内容动画 (属性动画及控制器过渡动画及自定义过渡动画)   
+          II. 基础物理动画： UIDynamicAniamtor和 UIDynamicBehavior    
+          III. 视差效果(Motion Effects)：添加微妙的运动到视图，以提供一个三维外观。  
+          IV. 触觉反馈(UIFeedbackGenerator): 针对特定类型的事件提供触觉反馈。    
      · 窗口和屏幕： 为视图层次结构和其他内容提供一个容器。   
      
 <4>. 用户交互：响应器和手势识别器帮助你处理触摸和其他事件。拖放、焦点、查看和弹出，以及可访问性处理其他用户交互。   
