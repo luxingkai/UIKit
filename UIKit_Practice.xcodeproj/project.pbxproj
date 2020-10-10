@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1157B0D924EE18BE0039E055 /* RotateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1157B0D824EE18BE0039E055 /* RotateViewController.m */; };
 		11A4EBA9246646BC004B1009 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A4EBA8246646BC004B1009 /* AppDelegate.m */; };
-		11A4EBAF246646BC004B1009 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A4EBAE246646BC004B1009 /* ViewController.m */; };
 		11A4EBB2246646BC004B1009 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11A4EBB0246646BC004B1009 /* Main.storyboard */; };
 		11A4EBB5246646BC004B1009 /* UIKit_Practice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 11A4EBB3246646BC004B1009 /* UIKit_Practice.xcdatamodeld */; };
 		11A4EBB7246646BF004B1009 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11A4EBB6246646BF004B1009 /* Assets.xcassets */; };
@@ -16,6 +16,8 @@
 		11A4EBBD246646BF004B1009 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A4EBBC246646BF004B1009 /* main.m */; };
 		11A4EBC7246646BF004B1009 /* UIKit_PracticeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A4EBC6246646BF004B1009 /* UIKit_PracticeTests.m */; };
 		11A4EBD2246646BF004B1009 /* UIKit_PracticeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A4EBD1246646BF004B1009 /* UIKit_PracticeUITests.m */; };
+		11A8C4F624B420FF007CE288 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A8C4F524B420FF007CE288 /* TabBarViewController.m */; };
+		11EAE0F625314AD300806F15 /* CustomizerNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EAE0F525314AD300806F15 /* CustomizerNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,11 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1157B0D724EE18BE0039E055 /* RotateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RotateViewController.h; sourceTree = "<group>"; };
+		1157B0D824EE18BE0039E055 /* RotateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RotateViewController.m; sourceTree = "<group>"; };
 		11A4EBA4246646BC004B1009 /* UIKit_Practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKit_Practice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A4EBA7246646BC004B1009 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		11A4EBA8246646BC004B1009 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		11A4EBAD246646BC004B1009 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		11A4EBAE246646BC004B1009 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		11A4EBB1246646BC004B1009 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		11A4EBB4246646BC004B1009 /* UIKit_Practice.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UIKit_Practice.xcdatamodel; sourceTree = "<group>"; };
 		11A4EBB6246646BF004B1009 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +55,10 @@
 		11A4EBCD246646BF004B1009 /* UIKit_PracticeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIKit_PracticeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A4EBD1246646BF004B1009 /* UIKit_PracticeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIKit_PracticeUITests.m; sourceTree = "<group>"; };
 		11A4EBD3246646BF004B1009 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11A8C4F424B420FF007CE288 /* TabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		11A8C4F524B420FF007CE288 /* TabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		11EAE0F425314AD300806F15 /* CustomizerNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomizerNavigationController.h; sourceTree = "<group>"; };
+		11EAE0F525314AD300806F15 /* CustomizerNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomizerNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,8 +111,12 @@
 			children = (
 				11A4EBA7246646BC004B1009 /* AppDelegate.h */,
 				11A4EBA8246646BC004B1009 /* AppDelegate.m */,
-				11A4EBAD246646BC004B1009 /* ViewController.h */,
-				11A4EBAE246646BC004B1009 /* ViewController.m */,
+				11A8C4F424B420FF007CE288 /* TabBarViewController.h */,
+				11A8C4F524B420FF007CE288 /* TabBarViewController.m */,
+				11EAE0F425314AD300806F15 /* CustomizerNavigationController.h */,
+				11EAE0F525314AD300806F15 /* CustomizerNavigationController.m */,
+				1157B0D724EE18BE0039E055 /* RotateViewController.h */,
+				1157B0D824EE18BE0039E055 /* RotateViewController.m */,
 				11A4EBB0246646BC004B1009 /* Main.storyboard */,
 				11A4EBB6246646BF004B1009 /* Assets.xcassets */,
 				11A4EBB8246646BF004B1009 /* LaunchScreen.storyboard */,
@@ -265,8 +275,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11A8C4F624B420FF007CE288 /* TabBarViewController.m in Sources */,
+				1157B0D924EE18BE0039E055 /* RotateViewController.m in Sources */,
+				11EAE0F625314AD300806F15 /* CustomizerNavigationController.m in Sources */,
 				11A4EBBD246646BF004B1009 /* main.m in Sources */,
-				11A4EBAF246646BC004B1009 /* ViewController.m in Sources */,
 				11A4EBA9246646BC004B1009 /* AppDelegate.m in Sources */,
 				11A4EBB5246646BC004B1009 /* UIKit_Practice.xcdatamodeld in Sources */,
 			);
