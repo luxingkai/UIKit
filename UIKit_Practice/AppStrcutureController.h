@@ -1,8 +1,8 @@
 //
-//  RotateViewController.h
+//  AppStrcutureController.h
 //  UIKit_Practice
 //
-//  Created by tigerfly on 2020/8/20.
+//  Created by tigerfly on 2020/11/4.
 //  Copyright © 2020 tiger fly. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RotateViewController : UIViewController
+@interface AppStrcutureController : UIViewController
 
 @end
 

@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1157B0D924EE18BE0039E055 /* RotateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1157B0D824EE18BE0039E055 /* RotateViewController.m */; };
+		1153A1CF25513A8100636633 /* SGObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1153A1CE25513A8100636633 /* SGObject.m */; };
+		1191AAF12552D4D70087F255 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1191AAF02552D4D70087F255 /* Accelerate.framework */; };
+		1191AAF32552D4E10087F255 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1191AAF22552D4E10087F255 /* AdSupport.framework */; };
+		1191AAF52552DB370087F255 /* UIKit.png in Resources */ = {isa = PBXBuildFile; fileRef = 1191AAF42552DB370087F255 /* UIKit.png */; };
+		1191AAFA2552DEE60087F255 /* AppStrcutureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1191AAF92552DEE60087F255 /* AppStrcutureController.m */; };
 		11A4EBA9246646BC004B1009 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A4EBA8246646BC004B1009 /* AppDelegate.m */; };
 		11A4EBB2246646BC004B1009 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11A4EBB0246646BC004B1009 /* Main.storyboard */; };
 		11A4EBB5246646BC004B1009 /* UIKit_Practice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 11A4EBB3246646BC004B1009 /* UIKit_Practice.xcdatamodeld */; };
@@ -38,8 +42,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1157B0D724EE18BE0039E055 /* RotateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RotateViewController.h; sourceTree = "<group>"; };
-		1157B0D824EE18BE0039E055 /* RotateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RotateViewController.m; sourceTree = "<group>"; };
+		1153A1CD25513A8100636633 /* SGObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGObject.h; sourceTree = "<group>"; };
+		1153A1CE25513A8100636633 /* SGObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGObject.m; sourceTree = "<group>"; };
+		1191AAF02552D4D70087F255 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		1191AAF22552D4E10087F255 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		1191AAF42552DB370087F255 /* UIKit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIKit.png; sourceTree = "<group>"; };
+		1191AAF82552DEE60087F255 /* AppStrcutureController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppStrcutureController.h; sourceTree = "<group>"; };
+		1191AAF92552DEE60087F255 /* AppStrcutureController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppStrcutureController.m; sourceTree = "<group>"; };
 		11A4EBA4246646BC004B1009 /* UIKit_Practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKit_Practice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A4EBA7246646BC004B1009 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		11A4EBA8246646BC004B1009 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -66,6 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1191AAF12552D4D70087F255 /* Accelerate.framework in Frameworks */,
+				1191AAF32552D4E10087F255 /* AdSupport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +97,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1191AAEF2552D4D70087F255 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1191AAF22552D4E10087F255 /* AdSupport.framework */,
+				1191AAF02552D4D70087F255 /* Accelerate.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1191AAF62552DD280087F255 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				11A8C4F424B420FF007CE288 /* TabBarViewController.h */,
+				11A8C4F524B420FF007CE288 /* TabBarViewController.m */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		1191AAF72552DD3D0087F255 /* NavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				11EAE0F425314AD300806F15 /* CustomizerNavigationController.h */,
+				11EAE0F525314AD300806F15 /* CustomizerNavigationController.m */,
+			);
+			path = NavigationController;
+			sourceTree = "<group>";
+		};
 		11A4EB9B246646BC004B1009 = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +131,7 @@
 				11A4EBC5246646BF004B1009 /* UIKit_PracticeTests */,
 				11A4EBD0246646BF004B1009 /* UIKit_PracticeUITests */,
 				11A4EBA5246646BC004B1009 /* Products */,
+				1191AAEF2552D4D70087F255 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,18 +148,19 @@
 		11A4EBA6246646BC004B1009 /* UIKit_Practice */ = {
 			isa = PBXGroup;
 			children = (
+				1191AAF72552DD3D0087F255 /* NavigationController */,
+				1191AAF62552DD280087F255 /* TabBarController */,
 				11A4EBA7246646BC004B1009 /* AppDelegate.h */,
 				11A4EBA8246646BC004B1009 /* AppDelegate.m */,
-				11A8C4F424B420FF007CE288 /* TabBarViewController.h */,
-				11A8C4F524B420FF007CE288 /* TabBarViewController.m */,
-				11EAE0F425314AD300806F15 /* CustomizerNavigationController.h */,
-				11EAE0F525314AD300806F15 /* CustomizerNavigationController.m */,
-				1157B0D724EE18BE0039E055 /* RotateViewController.h */,
-				1157B0D824EE18BE0039E055 /* RotateViewController.m */,
+				1191AAF82552DEE60087F255 /* AppStrcutureController.h */,
+				1191AAF92552DEE60087F255 /* AppStrcutureController.m */,
+				1153A1CD25513A8100636633 /* SGObject.h */,
+				1153A1CE25513A8100636633 /* SGObject.m */,
 				11A4EBB0246646BC004B1009 /* Main.storyboard */,
 				11A4EBB6246646BF004B1009 /* Assets.xcassets */,
 				11A4EBB8246646BF004B1009 /* LaunchScreen.storyboard */,
 				11A4EBBB246646BF004B1009 /* Info.plist */,
+				1191AAF42552DB370087F255 /* UIKit.png */,
 				11A4EBBC246646BF004B1009 /* main.m */,
 				11A4EBB3246646BC004B1009 /* UIKit_Practice.xcdatamodeld */,
 			);
@@ -249,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11A4EBBA246646BF004B1009 /* LaunchScreen.storyboard in Resources */,
+				1191AAF52552DB370087F255 /* UIKit.png in Resources */,
 				11A4EBB7246646BF004B1009 /* Assets.xcassets in Resources */,
 				11A4EBB2246646BC004B1009 /* Main.storyboard in Resources */,
 			);
@@ -276,7 +317,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				11A8C4F624B420FF007CE288 /* TabBarViewController.m in Sources */,
-				1157B0D924EE18BE0039E055 /* RotateViewController.m in Sources */,
+				1191AAFA2552DEE60087F255 /* AppStrcutureController.m in Sources */,
+				1153A1CF25513A8100636633 /* SGObject.m in Sources */,
 				11EAE0F625314AD300806F15 /* CustomizerNavigationController.m in Sources */,
 				11A4EBBD246646BF004B1009 /* main.m in Sources */,
 				11A4EBA9246646BC004B1009 /* AppDelegate.m in Sources */,

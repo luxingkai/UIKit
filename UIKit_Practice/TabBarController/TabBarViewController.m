@@ -7,8 +7,8 @@
 //
 
 #import "TabBarViewController.h"
-#import "RotateViewController.h"
 #import "CustomizerNavigationController.h"
+#import "AppStrcutureController.h"
 
 @interface TabBarViewController ()
 
@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    RotateViewController *rotateVC = [RotateViewController new];
+    AppStrcutureController *rotateVC = [AppStrcutureController new];
     CustomizerNavigationController *nav = [[CustomizerNavigationController alloc] initWithRootViewController:rotateVC];
     nav.tabBarItem.title = @"旋转控制";
     nav.tabBarItem.image = [[UIImage imageNamed:@"moai"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];

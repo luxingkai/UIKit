@@ -1,25 +1,22 @@
 //
-//  RotateViewController.m
+//  AppStrcutureController.m
 //  UIKit_Practice
 //
-//  Created by tigerfly on 2020/8/20.
+//  Created by tigerfly on 2020/11/4.
 //  Copyright © 2020 tiger fly. All rights reserved.
 //
 
-#import "RotateViewController.h"
+#import "AppStrcutureController.h"
 
-@interface RotateViewController ()
+@interface AppStrcutureController ()
 
 @end
 
-@implementation RotateViewController
+@implementation AppStrcutureController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = UIColor.whiteColor;
-    
-    
 }
 
 /*
