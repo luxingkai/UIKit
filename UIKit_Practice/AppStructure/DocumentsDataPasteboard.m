@@ -1,18 +1,18 @@
 //
-//  AppStrcutureController.m
+//  DocumentsDataPasteboard.m
 //  UIKit_Practice
 //
-//  Created by tigerfly on 2020/11/4.
+//  Created by tigerfly on 2020/11/5.
 //  Copyright © 2020 tiger fly. All rights reserved.
 //
 
-#import "AppStrcutureController.h"
+#import "DocumentsDataPasteboard.h"
 
-@interface AppStrcutureController ()
+@interface DocumentsDataPasteboard ()
 
 @end
 
-@implementation AppStrcutureController
+@implementation DocumentsDataPasteboard
 
 - (void)viewDidLoad {
     [super viewDidLoad];

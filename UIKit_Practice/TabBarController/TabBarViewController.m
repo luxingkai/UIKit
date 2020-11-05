@@ -8,7 +8,68 @@
 
 #import "TabBarViewController.h"
 #import "CustomizerNavigationController.h"
-#import "AppStrcutureController.h"
+
+/**
+ App Structure
+ 
+ UIKit manages your app's interactions with the system and
+ provides classes for you to manage your app's data and
+ resources.
+ */
+#import "AppAndEnvironmentController.h"
+#import "DocumentsDataPasteboard.h"
+#import "ResourceManagement.h"
+#import "AppExtensions.h"
+#import "InterprocessCommunication.h"
+
+/**
+ User Interface
+ 
+ Views help you display content onscreen and facilitate user
+ interactions; view controllers help you manage views and the
+ structure of your interface.
+ */
+#import "ViewsAndControls.h"
+#import "ViewControllers.h"
+#import "ViewLayout.h"
+#import "AppearanceCustomization.h"
+#import "AnimationAndHaptics.h"
+#import "WindowsAndScreens.h"
+
+/**
+ User Interactions
+ 
+ Responders and gesture recognizers help you handle touches
+ and other events. Drag and drop, focus, peek, and pop, and
+ accessibility handle other uesr interactions.
+ */
+#import "TouchesPressesGestures.h"
+#import "DragAndDrop.h"
+#import "PointerInteractions.h"
+#import "PencilInteractions.h"
+#import "Focus-based Navigation.h"
+#import "Menus_Shortcuts.h"
+
+/**
+ Graphics, Drawing and Printing
+ UIKit provides classes and protocols that help you configure
+ your drawing environment and render your content.
+ */
+#import "Images_PDF.h"
+#import "Drawing.h"
+#import "Printing.h"
+
+/**
+ Text
+ In addition to text views that simplify displaying text in
+ your app, UIKit provides custom text management and rendering
+ that supports the system keyboards.
+ */
+#import "TextDisplay_Fonts.h"
+#import "TextStorage.h"
+#import "Keyboards_Input.h"
+#import "HandwritingRecognition.h"
+
 
 @interface TabBarViewController ()
 
@@ -21,7 +82,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    AppStrcutureController *rotateVC = [AppStrcutureController new];
+    ViewsAndControls *rotateVC = [ViewsAndControls new];
     CustomizerNavigationController *nav = [[CustomizerNavigationController alloc] initWithRootViewController:rotateVC];
     nav.tabBarItem.title = @"旋转控制";
     nav.tabBarItem.image = [[UIImage imageNamed:@"moai"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];

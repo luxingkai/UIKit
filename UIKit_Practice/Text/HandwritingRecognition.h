@@ -1,8 +1,8 @@
 //
-//  AppStrcutureController.h
+//  HandwritingRecognition.h
 //  UIKit_Practice
 //
-//  Created by tigerfly on 2020/11/4.
+//  Created by tigerfly on 2020/11/5.
 //  Copyright © 2020 tiger fly. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AppStrcutureController : UIViewController
+@interface HandwritingRecognition : UIViewController
 
 @end
 
