@@ -101,6 +101,72 @@
      without changing its frame or bounds properties directly.
      */
     
+    /**
+     Creating a View
+     
+     Normallay, you create views in your storyboards by dragging them
+     from the library to your canvas. You can also create views
+     programmatically. When creating a view, you typically specify
+     its initial size and position relative to its future superview.
+     
+     After creating a view, create Auto layout rules to govern how
+     the size and position of the view change in response to changes
+     in the rest of the view hierarchy.
+     https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/index.html#//apple_ref/doc/uid/TP40010853
+     */
+    
+    /**
+     The View Drawing Cycle
+     
+     View drawing occurs on an-needed basis. When a view is first shown,
+     or when all or part of it becomes visible due to layout changes,
+     the system asks the view to drawn its contents. For views that
+     contain custom content using UIKit or Core Graphics, the system
+     calls the view's drawRect:method. You implementation of this method
+     is responsible for drawing the view's content into the current
+     graphics context, which is set up by the system automatically prior
+     to calling this method. This creates a static visual representation
+     of your view's content that can then be displayed on the screen.
+     
+     When the actual content of your view changes, it is your responsibility
+     to notify the system that your view needs to be redrawn. You do this
+     by calling your view's setNeedDisplay or setNeedsDisplayInRect:
+     method of the view. These methods let the system know that it should
+     update the view during the next drawing cycle. Because it waits until
+     the next drawing cycle to update the view. you can call these methods
+     on multiple views to update them at the same time.
+     
+     ⚠️ If you are using OpenGL ES to to your drawingm you should use the
+        GLKView class instead of subclassing UIView.
+     */
+    
+    /**
+     Animations
+     
+     Changes to several view properties can be animated--that is, changing
+     the property creates an animation starting at the current value and
+     ending at the new value that you specify. The following properties of
+     the UIView classes are animatable:
+     
+     •  frame
+     •  bounds
+     •  center
+     •  transform
+     •  alpha
+     •  backgroundColor
+     
+     To animate your changes, create a UIViewPropertyAnimator object and use
+     its handler block to change the values of your view's properties. The
+     UIViewPropertyAnimator class lets you specify the duration and timing
+     of your animations, but it performs the actual animations. You can
+     pause a property-based animator that is currently running to interrupt
+     the animation and drive it interactively.
+     */
+    
+    /**
+     Threading Considerations
+     
+     */
     
     
     // Do any additional setup after loading the view.
