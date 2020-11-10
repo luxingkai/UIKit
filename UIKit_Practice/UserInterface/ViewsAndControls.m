@@ -7,6 +7,9 @@
 //
 
 #import "ViewsAndControls.h"
+#import "SubView.h"
+#import "SGObject.h"
+#import "Object.h"
 
 @interface ViewsAndControls ()
 
@@ -166,11 +169,27 @@
     /**
      Threading Considerations
      
+     
      */
+
+    SubView *view = [[SubView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    view.backgroundColor = UIColor.redColor;
+    [self.view addSubview:view];
+  
     
     
     // Do any additional setup after loading the view.
 }
+
+
+
+
+
+
+
+
+
+
 
 /*
 #pragma mark - Navigation

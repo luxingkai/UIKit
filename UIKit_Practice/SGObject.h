@@ -19,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
  NSMapTable
  NSHashTable
  NSString
+ NSMutableString
+ NSMutableAttribtuedString
+ NSAttributedString
  */
 
 /**
@@ -84,6 +87,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SGObject : NSObject<NSCoding,NSCopying,NSMutableCopying>
 @property (nonatomic, strong) NSString *csd;
 @property (nonatomic, assign) float value;
+
+- (void)eat;
 @end
 
 NS_ASSUME_NONNULL_END

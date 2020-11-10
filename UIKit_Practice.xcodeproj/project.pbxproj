@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		110031E6255A245000A36FB3 /* SubView.m in Sources */ = {isa = PBXBuildFile; fileRef = 110031E5255A245000A36FB3 /* SubView.m */; };
+		110031E9255A307700A36FB3 /* Object.m in Sources */ = {isa = PBXBuildFile; fileRef = 110031E8255A307700A36FB3 /* Object.m */; };
 		1153A1CF25513A8100636633 /* SGObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1153A1CE25513A8100636633 /* SGObject.m */; };
 		116169B52553F58A005DC3D8 /* AppAndEnvironmentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 116169B42553F58A005DC3D8 /* AppAndEnvironmentController.m */; };
 		116169B82553F5B8005DC3D8 /* DocumentsDataPasteboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 116169B72553F5B8005DC3D8 /* DocumentsDataPasteboard.m */; };
@@ -65,6 +67,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		110031E4255A245000A36FB3 /* SubView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubView.h; sourceTree = "<group>"; };
+		110031E5255A245000A36FB3 /* SubView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubView.m; sourceTree = "<group>"; };
+		110031E7255A307700A36FB3 /* Object.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Object.h; sourceTree = "<group>"; };
+		110031E8255A307700A36FB3 /* Object.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Object.m; sourceTree = "<group>"; };
 		1153A1CD25513A8100636633 /* SGObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGObject.h; sourceTree = "<group>"; };
 		1153A1CE25513A8100636633 /* SGObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGObject.m; sourceTree = "<group>"; };
 		116169B32553F58A005DC3D8 /* AppAndEnvironmentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppAndEnvironmentController.h; sourceTree = "<group>"; };
@@ -319,6 +325,10 @@
 				116169B22553F4F6005DC3D8 /* Text */,
 				1153A1CD25513A8100636633 /* SGObject.h */,
 				1153A1CE25513A8100636633 /* SGObject.m */,
+				110031E7255A307700A36FB3 /* Object.h */,
+				110031E8255A307700A36FB3 /* Object.m */,
+				110031E4255A245000A36FB3 /* SubView.h */,
+				110031E5255A245000A36FB3 /* SubView.m */,
 				11A4EBB0246646BC004B1009 /* Main.storyboard */,
 				11A4EBB6246646BF004B1009 /* Assets.xcassets */,
 				11A4EBB8246646BF004B1009 /* LaunchScreen.storyboard */,
@@ -490,6 +500,7 @@
 				1153A1CF25513A8100636633 /* SGObject.m in Sources */,
 				11EAE0F625314AD300806F15 /* CustomizerNavigationController.m in Sources */,
 				116169CA2553F641005DC3D8 /* ViewLayout.m in Sources */,
+				110031E6255A245000A36FB3 /* SubView.m in Sources */,
 				11A4EBBD246646BF004B1009 /* main.m in Sources */,
 				116169C42553F622005DC3D8 /* ViewsAndControls.m in Sources */,
 				116169EB2553F737005DC3D8 /* Drawing.m in Sources */,
@@ -504,6 +515,7 @@
 				116169D32553F683005DC3D8 /* WindowsAndScreens.m in Sources */,
 				11A4EBA9246646BC004B1009 /* AppDelegate.m in Sources */,
 				116169DC2553F6C7005DC3D8 /* PointerInteractions.m in Sources */,
+				110031E9255A307700A36FB3 /* Object.m in Sources */,
 				11A4EBB5246646BC004B1009 /* UIKit_Practice.xcdatamodeld in Sources */,
 				116169F12553F75F005DC3D8 /* TextDisplay_Fonts.m in Sources */,
 				116169DF2553F6D8005DC3D8 /* PencilInteractions.m in Sources */,

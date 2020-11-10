@@ -33,5 +33,9 @@
     return newOne;
 }
 
+- (void)eat {
+    NSLog(@"吃橘子");
+}
+
 
 @end
