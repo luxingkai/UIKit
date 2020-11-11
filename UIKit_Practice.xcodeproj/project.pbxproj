@@ -33,7 +33,6 @@
 		116169F12553F75F005DC3D8 /* TextDisplay_Fonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 116169F02553F75F005DC3D8 /* TextDisplay_Fonts.m */; };
 		116169F42553F770005DC3D8 /* TextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 116169F32553F770005DC3D8 /* TextStorage.m */; };
 		116169F72553F787005DC3D8 /* Keyboards_Input.m in Sources */ = {isa = PBXBuildFile; fileRef = 116169F62553F787005DC3D8 /* Keyboards_Input.m */; };
-		116169FA2553F7AD005DC3D8 /* HandwritingRecognition.m in Sources */ = {isa = PBXBuildFile; fileRef = 116169F92553F7AD005DC3D8 /* HandwritingRecognition.m */; };
 		1191AAF12552D4D70087F255 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1191AAF02552D4D70087F255 /* Accelerate.framework */; };
 		1191AAF32552D4E10087F255 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1191AAF22552D4E10087F255 /* AdSupport.framework */; };
 		1191AAF52552DB370087F255 /* UIKit.png in Resources */ = {isa = PBXBuildFile; fileRef = 1191AAF42552DB370087F255 /* UIKit.png */; };
@@ -119,8 +118,6 @@
 		116169F32553F770005DC3D8 /* TextStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextStorage.m; sourceTree = "<group>"; };
 		116169F52553F787005DC3D8 /* Keyboards_Input.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Keyboards_Input.h; sourceTree = "<group>"; };
 		116169F62553F787005DC3D8 /* Keyboards_Input.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Keyboards_Input.m; sourceTree = "<group>"; wrapsLines = 1; };
-		116169F82553F7AD005DC3D8 /* HandwritingRecognition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandwritingRecognition.h; sourceTree = "<group>"; };
-		116169F92553F7AD005DC3D8 /* HandwritingRecognition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandwritingRecognition.m; sourceTree = "<group>"; };
 		1191AAF02552D4D70087F255 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		1191AAF22552D4E10087F255 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		1191AAF42552DB370087F255 /* UIKit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIKit.png; sourceTree = "<group>"; };
@@ -258,8 +255,6 @@
 				116169F32553F770005DC3D8 /* TextStorage.m */,
 				116169F52553F787005DC3D8 /* Keyboards_Input.h */,
 				116169F62553F787005DC3D8 /* Keyboards_Input.m */,
-				116169F82553F7AD005DC3D8 /* HandwritingRecognition.h */,
-				116169F92553F7AD005DC3D8 /* HandwritingRecognition.m */,
 			);
 			path = Text;
 			sourceTree = "<group>";
@@ -492,7 +487,6 @@
 				116169CD2553F65C005DC3D8 /* AppearanceCustomization.m in Sources */,
 				116169D62553F69F005DC3D8 /* TouchesPressesGestures.m in Sources */,
 				116169C12553F603005DC3D8 /* InterprocessCommunication.m in Sources */,
-				116169FA2553F7AD005DC3D8 /* HandwritingRecognition.m in Sources */,
 				116169C72553F635005DC3D8 /* ViewControllers.m in Sources */,
 				11A8C4F624B420FF007CE288 /* TabBarViewController.m in Sources */,
 				116169BB2553F5D3005DC3D8 /* ResourceManagement.m in Sources */,

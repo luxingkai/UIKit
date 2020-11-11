@@ -82,7 +82,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    ViewsAndControls *rotateVC = [ViewsAndControls new];
+    TextDisplay_Fonts *rotateVC = [TextDisplay_Fonts new];
     CustomizerNavigationController *nav = [[CustomizerNavigationController alloc] initWithRootViewController:rotateVC];
     nav.tabBarItem.title = @"旋转控制";
     nav.tabBarItem.image = [[UIImage imageNamed:@"moai"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];

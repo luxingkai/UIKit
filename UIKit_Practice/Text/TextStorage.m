@@ -57,7 +57,7 @@
     /**
      Processing the Editing Actions
      */
-    NSTextStorage *textStorage = [NSTextStorage new];
+    NSTextStorage *textStorage = [[NSTextStorage alloc] initWithString:@"哈是多方面撒到发达省份"];
     textStorage.delegate = self;
     
     /**

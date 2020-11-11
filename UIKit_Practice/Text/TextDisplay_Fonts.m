@@ -27,6 +27,7 @@
         _layoutManager.limitsLayoutForSuspiciousContents = NO;
         _layoutManager.usesDefaultHyphenation = YES;
         
+        [_layoutManager invalidateDisplayForGlyphRange:NSMakeRange(0, 12)];
         
     }
     return self;
@@ -49,6 +50,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = UIColor.whiteColor;
     
     /*
      Display text, manage fonts, and check spelling
@@ -187,14 +189,14 @@
     //    layoutManager ensureGlyphsForCharacterRange:<#(NSRange)#>
     //    layoutManager ensureGlyphsForGlyphRange:<#(NSRange)#>
     //    layoutManager ensureLayoutForBoundingRect:<#(CGRect)#> inTextContainer:<#(nonnull NSTextContainer *)#>
-    //    layoutManager ensureLayoutForCharacterRange:<#(NSRange)#>
+    //    layoutManager ensureLayoutForCharacterRange:(NSRange)
     //    layoutManager ensureLayoutForGlyphRange:<#(NSRange)#>
     //    layoutManager ensureLayoutForTextContainer:<#(nonnull NSTextContainer *)#>
     
     /**
      Accessing Glyphs
      */
-    //    layoutManager getGlyphsInRange:<#(NSRange)#> glyphs:<#(nullable CGGlyph *)#> properties:<#(nullable NSGlyphProperty *)#> characterIndexes:<#(nullable NSUInteger *)#> bidiLevels:<#(nullable unsigned char *)#>
+    //    layoutManager getGlyphsInRange:<#(NSRange)#> glyphs:<#(nullable CGGlyph *)#> properties:<#(nullable NSGlyphProperty *)#> characterIndexes:<#(nullable NSUInteger *)#> bidiLevels:(nullable unsigned char *)
     //    layoutManager CGGlyphAtIndex:<#(NSUInteger)#>
     //    layoutManager CGGlyphAtIndex:<#(NSUInteger)#> isValidIndex:<#(nullable BOOL *)#>
     //    layoutManager setGlyphs:<#(nonnull const CGGlyph *)#> properties:<#(nonnull const NSGlyphProperty *)#> characterIndexes:<#(nonnull const NSUInteger *)#> font:<#(nonnull UIFont *)#> forGlyphRange:<#(NSRange)#>
@@ -351,7 +353,6 @@
      Getting the Available Languages
      */
 //    textChecke.availableLanguages
-    
     
     
 }

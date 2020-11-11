@@ -56,7 +56,7 @@
      An object that manages the content for a rectangular area on the
      screen.
      
-     Views are teh fundamental building blocks of your app's user interface,
+     Views are the fundamental building blocks of your app's user interface,
      and the UIView class defines the behaviors that are common to all
      views. A view object renders content within its bounds rectangle
      and handles any interactions with that content. The UIView class
