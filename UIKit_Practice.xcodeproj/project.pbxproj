@@ -118,7 +118,7 @@
 		116169F22553F770005DC3D8 /* TextStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextStorage.h; sourceTree = "<group>"; };
 		116169F32553F770005DC3D8 /* TextStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextStorage.m; sourceTree = "<group>"; };
 		116169F52553F787005DC3D8 /* Keyboards_Input.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Keyboards_Input.h; sourceTree = "<group>"; };
-		116169F62553F787005DC3D8 /* Keyboards_Input.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Keyboards_Input.m; sourceTree = "<group>"; };
+		116169F62553F787005DC3D8 /* Keyboards_Input.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Keyboards_Input.m; sourceTree = "<group>"; wrapsLines = 1; };
 		116169F82553F7AD005DC3D8 /* HandwritingRecognition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandwritingRecognition.h; sourceTree = "<group>"; };
 		116169F92553F7AD005DC3D8 /* HandwritingRecognition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandwritingRecognition.m; sourceTree = "<group>"; };
 		1191AAF02552D4D70087F255 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };

@@ -9,6 +9,37 @@
 #import "TextDisplay_Fonts.h"
 #import <CoreText/CoreText.h>
 
+@implementation DisplayView {
+    NSLayoutManager *_layoutManager;
+    
+}
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        
+        _layoutManager = [[NSLayoutManager alloc] init];
+        _layoutManager.delegate = self;
+        
+        _layoutManager.allowsNonContiguousLayout = true;
+        _layoutManager.showsInvisibleCharacters = YES;
+        _layoutManager.showsControlCharacters = YES;
+        _layoutManager.usesFontLeading = YES;
+        _layoutManager.limitsLayoutForSuspiciousContents = NO;
+        _layoutManager.usesDefaultHyphenation = YES;
+        
+        
+    }
+    return self;
+}
+
+
+
+
+
+@end
+
+
+
 @interface TextDisplay_Fonts ()<NSLayoutManagerDelegate,NSTextLayoutOrientationProvider>
 
 @end
@@ -33,7 +64,7 @@
      characters.
      
      NSLayoutManager maps Unicode character codes to glyphs, sets
-     the glyphs in a series of NSTextContianer objects, and displays
+     the glyphs in a series of NSTextContainer objects, and displays
      them in a series of NSTextureView objects. In addition to its
      core function of laying out text, a layout manager object coordinates
      its text view object, provides services to those text views to
@@ -43,6 +74,7 @@
      of NSLayoutManager to handle additional text attributes, whether
      inherent or not.
      */
+    
     
     /**
      Text Antialiasing
@@ -114,7 +146,7 @@
     /**
      Accessing the Text Storage
      */
-    //    layoutManager.textStorage
+//    layoutManager.textStorage
     
     /**
      Configuring the Global Layout Manager Options
@@ -126,12 +158,12 @@
     //    layoutManager.usesFontLeading
     //    layoutManager.limitsLayoutForSuspiciousContents
     //    layoutManager.usesDefaultHyphenation
-    
+     
     /**
      Managing the Text Containers
      */
     //    layoutManager.textContainers
-    //    layoutManager addTextContainer:<#(nonnull NSTextContainer *)#>
+    //    layoutManager addTextContainer:(nonnull NSTextContainer *)
     //    layoutManager insertTextContainer:<#(nonnull NSTextContainer *)#> atIndex:<#(NSUInteger)#>
     //    layoutManager removeTextContainerAtIndex:<#(NSUInteger)#>
     //    layoutManager setTextContainer:<#(nonnull NSTextContainer *)#> forGlyphRange:<#(NSRange)#>
@@ -143,7 +175,7 @@
     /**
      Invalidating Glyphs and Layout
      */
-    //    layoutManager invalidateDisplayForGlyphRange:<#(NSRange)#>
+    //    layoutManager invalidateDisplayForGlyphRange:(NSRange)
     //    layoutManager invalidateDisplayForCharacterRange:<#(NSRange)#>
     //    layoutManager invalidateGlyphsForCharacterRange:<#(NSRange)#> changeInLength:<#(NSInteger)#> actualCharacterRange:<#(nullable NSRangePointer)#>
     //    layoutManager invalidateLayoutForCharacterRange:<#(NSRange)#> actualCharacterRange:<#(nullable NSRangePointer)#>
@@ -224,7 +256,7 @@
      Drawing
      */
     //    layoutManager drawBackgroundForGlyphRange:<#(NSRange)#> atPoint:<#(CGPoint)#>
-    //    layoutManager drawGlyphsForGlyphRange:<#(NSRange)#> atPoint:<#(CGPoint)#>
+    //    layoutManager drawGlyphsForGlyphRange:(NSRange) atPoint:<#(CGPoint)#>
     //    layoutManager drawStrikethroughForGlyphRange:<#(NSRange)#> strikethroughType:<#(NSUnderlineStyle)#> baselineOffset:<#(CGFloat)#> lineFragmentRect:<#(CGRect)#> lineFragmentGlyphRange:<#(NSRange)#> containerOrigin:<#(CGPoint)#>
     //    layoutManager drawUnderlineForGlyphRange:<#(NSRange)#> underlineType:<#(NSUnderlineStyle)#> baselineOffset:<#(CGFloat)#> lineFragmentRect:<#(CGRect)#> lineFragmentGlyphRange:<#(NSRange)#> containerOrigin:<#(CGPoint)#>
     //    layoutManager fillBackgroundRectArray:<#(nonnull const CGRect *)#> count:<#(NSUInteger)#> forCharacterRange:<#(NSRange)#> color:<#(nonnull UIColor *)#>
@@ -389,7 +421,7 @@ withProposedLineFragmentRect:(CGRect)rect {
 boundingBoxForControlGlyphAtIndex:(NSUInteger)glyphIndex
        forTextContainer:(NSTextContainer *)textContainer
    proposedLineFragment:(CGRect)proposedRect
-          glyphPosition:(CGPoint)glyphPosition
+          glyphPosition:(CGPoint)glyphPositio
          characterIndex:(NSUInteger)charIndex {
     return CGRectZero;
 }
