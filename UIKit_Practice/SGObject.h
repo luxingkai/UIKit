@@ -53,6 +53,39 @@ NS_ASSUME_NONNULL_BEGIN
  see Archives and Serializations Programming Guide.
  */
 
+
+
+/**
+ NSSecureCoding
+ 
+ A protocol that enables encoding and decoding in a manner that is
+ robust against object substitution attacks.
+ 
+ Historically, many classes decoded instances of themselves like this:
+ 
+ id object = [decoder decodeObjectForKey:@"myKey"];
+ if (![object isKindOfClass:[MyClass class]]) { ... fail ... }
+ 
+ This technique is potentially unsafe because by the time you can
+ verify the class type, the object has already been constructed,
+ and if this is part of a collection class, potentially inserted
+ into an object graph.
+ 
+ In order to conform to NSSecureCoding:
+ •  An object that does not override initWithCoder: can conform to
+    NSSecureCoding without any changes (assuming that is is a subclass
+    of another class that conforms)/.
+ •  An object that does override initWithCoder: must decode any enclosed
+    objects using the decodeObjectOfClass:forKey: method. For example:
+ 
+    id obj = [decoder decodeObjectOfClass:[MyClass class] forKey:@"myKey"];
+    
+ In addition, the class must override the getter for its supportsSecureCoding
+ property to reeturn YES.
+ */
+
+
+
 /**
  NSCopying
  
@@ -84,7 +117,7 @@ NS_ASSUME_NONNULL_BEGIN
  handle its own instance variables, invoking the superclass’s implementation first.
  */
 
-@interface SGObject : NSObject<NSCoding,NSCopying,NSMutableCopying>
+@interface SGObject : NSObject<NSSecureCoding,NSCopying,NSMutableCopying>
 @property (nonatomic, strong) NSString *csd;
 @property (nonatomic, assign) float value;
 

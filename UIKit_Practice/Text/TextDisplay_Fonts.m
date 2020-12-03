@@ -8,6 +8,7 @@
 
 #import "TextDisplay_Fonts.h"
 #import <CoreText/CoreText.h>
+#import "SGObject.h"
 
 @implementation DisplayView {
     NSLayoutManager *_layoutManager;
@@ -354,6 +355,7 @@
      */
 //    textChecke.availableLanguages
     
+
     
 }
 

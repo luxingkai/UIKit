@@ -68,7 +68,6 @@
 #import "TextDisplay_Fonts.h"
 #import "TextStorage.h"
 #import "Keyboards_Input.h"
-#import "HandwritingRecognition.h"
 
 
 @interface TabBarViewController ()
