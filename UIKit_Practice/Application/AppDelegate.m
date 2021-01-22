@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "TabBarViewController.h"
+#import "CTabBarViewController.h"
+#import "AnimationAndHaptics.h"
 
 @interface AppDelegate ()
 

@@ -10,10 +10,10 @@
 
 @implementation Object
 
-//method override
-- (void)eat {
-    [super eat];
-    NSLog(@"还吃橘子吗");
-}
+////method override
+//- (void)eat {
+//    [super eat];
+//    NSLog(@"还吃橘子吗");
+//}
 
 @end

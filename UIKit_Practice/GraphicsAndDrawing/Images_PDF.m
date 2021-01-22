@@ -7,6 +7,8 @@
 //
 
 #import "Images_PDF.h"
+#import <QuartzCore/QuartzCore.h>
+#import <CoreGraphics/CoreGraphics.h>
 
 @interface Images_PDF ()
 
@@ -17,7 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     
     
     

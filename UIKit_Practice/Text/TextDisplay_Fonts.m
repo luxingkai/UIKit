@@ -175,6 +175,7 @@
     //    layoutManager textContainerForGlyphAtIndex:<#(NSUInteger)#> effectiveRange:<#(nullable NSRangePointer)#> withoutAdditionalLayout:<#(BOOL)#>
     //    layoutManager usedRectForTextContainer:<#(nonnull NSTextContainer *)#>
     
+    
     /**
      Invalidating Glyphs and Layout
      */
@@ -183,6 +184,7 @@
     //    layoutManager invalidateGlyphsForCharacterRange:<#(NSRange)#> changeInLength:<#(NSInteger)#> actualCharacterRange:<#(nullable NSRangePointer)#>
     //    layoutManager invalidateLayoutForCharacterRange:<#(NSRange)#> actualCharacterRange:<#(nullable NSRangePointer)#>
     //    layoutManager processEditingForTextStorage:<#(nonnull NSTextStorage *)#> edited:<#(NSTextStorageEditActions)#> range:<#(NSRange)#> changeInLength:<#(NSInteger)#> invalidatedRange:<#(NSRange)#>
+    
     
     /**
      Causing Glyph Generation and Layout
@@ -193,6 +195,7 @@
     //    layoutManager ensureLayoutForCharacterRange:(NSRange)
     //    layoutManager ensureLayoutForGlyphRange:<#(NSRange)#>
     //    layoutManager ensureLayoutForTextContainer:<#(nonnull NSTextContainer *)#>
+    
     
     /**
      Accessing Glyphs
@@ -207,6 +210,7 @@
     //    layoutManager numberOfGlyphs
     //    layoutManager propertyForGlyphAtIndex:<#(NSUInteger)#>
     
+    
     /**
      Setting Layout Information
      */
@@ -216,6 +220,7 @@
     //    layoutManager setLineFragmentRect:<#(CGRect)#> forGlyphRange:<#(NSRange)#> usedRect:<#(CGRect)#>
     //    layoutManager setLocation:<#(CGPoint)#> forStartOfGlyphRange:<#(NSRange)#>
     //    layoutManager setNotShownAttribute:<#(BOOL)#> forGlyphAtIndex:<#(NSUInteger)#>
+    
     
     /**
      Getting Layout Information
@@ -235,6 +240,7 @@
     //    layoutManager locationForGlyphAtIndex:<#(NSUInteger)#>
     //    layoutManager notShownAttributeForGlyphAtIndex:<#(NSUInteger)#>
     //    layoutManager truncatedGlyphRangeInLineFragmentForGlyphAtIndex:<#(NSUInteger)#>
+    
     
     /**
      Performing Advanced Layout Queries

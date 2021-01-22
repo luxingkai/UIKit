@@ -68,7 +68,7 @@
 #import "TextDisplay_Fonts.h"
 #import "TextStorage.h"
 #import "Keyboards_Input.h"
-
+#import "AnimationAndHaptics.h"
 
 @interface TabBarViewController ()
 
@@ -81,13 +81,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    TextDisplay_Fonts *rotateVC = [TextDisplay_Fonts new];
-    CustomizerNavigationController *nav = [[CustomizerNavigationController alloc] initWithRootViewController:rotateVC];
+//    self.tabBar
+//    self.tabBarItem
+    
+//    UITabBar *tabBar = [[UITabBar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 60)];
+//    [tabBar showsLargeContentViewer];
+//    self.customizableViewControllers
+    
+    AnimationAndHaptics *rotateVC = [AnimationAndHaptics new];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:rotateVC];
     nav.tabBarItem.title = @"旋转控制";
     nav.tabBarItem.image = [[UIImage imageNamed:@"moai"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     nav.tabBarItem.selectedImage = [[UIImage imageNamed:@"moai"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
-    [self setViewControllers:@[nav]];
+    self.viewControllers = @[nav];
     
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"PingFangSC-Regular" size:10
                                                                   ],NSForegroundColorAttributeName:[UIColor blackColor]} forState:UIControlStateNormal];
