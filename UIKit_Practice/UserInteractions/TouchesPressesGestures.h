@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TouchesPressesGestures : UIViewController
+@interface TouchesPressesGestures : UICollectionViewController
 
 @end
 

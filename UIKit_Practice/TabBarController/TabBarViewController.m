@@ -87,13 +87,20 @@
 //    UITabBar *tabBar = [[UITabBar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 60)];
 //    [tabBar showsLargeContentViewer];
 //    self.customizableViewControllers
-    
-    AnimationAndHaptics *rotateVC = [AnimationAndHaptics new];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:rotateVC];
+//    CGFloat screen_w = [UIScreen mainScreen].bounds.size.width;
+//    CGFloat screen_h = [UIScreen mainScreen].bounds.size.height;
+//    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+//    flowLayout.itemSize = CGSizeMake((screen_w - 40)/3, 220);
+//    flowLayout.minimumInteritemSpacing = 10;
+//    flowLayout.minimumLineSpacing = 10;
+//    flowLayout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
+//    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+//    TouchesPressesGestures *rotateVC = [[TouchesPressesGestures alloc] initWithCollectionViewLayout:flowLayout];
+    ViewsAndControls *vc = [ViewsAndControls new];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     nav.tabBarItem.title = @"旋转控制";
     nav.tabBarItem.image = [[UIImage imageNamed:@"moai"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     nav.tabBarItem.selectedImage = [[UIImage imageNamed:@"moai"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
     self.viewControllers = @[nav];
     
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"PingFangSC-Regular" size:10

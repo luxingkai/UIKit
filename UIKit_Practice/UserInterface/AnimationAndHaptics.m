@@ -8,12 +8,29 @@
 
 #import "AnimationAndHaptics.h"
 
+@interface CycleItme : UIView
+
+@end
+
+@implementation CycleItme
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        
+    }
+    return self;
+}
+
+@end
+
 @interface AnimationAndHaptics ()<UIViewControllerTransitioningDelegate,UIViewControllerAnimatedTransitioning
 ,UIViewControllerContextTransitioning,UIViewControllerInteractiveTransitioning,UIViewImplicitlyAnimating,UIViewControllerTransitionCoordinator,UIViewControllerTransitionCoordinatorContext>
 
 @end
 
-@implementation AnimationAndHaptics
+@implementation AnimationAndHaptics {
+    UIView *_partView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -368,9 +385,245 @@
 
 #pragma mark -- Physics-Based Animations
     
+    /*
+     Apply plysics-based animations to your views.
+     */
     
-    
+    /*
+     Dynamic Animators
+     
+     UIDynamicAnimator
+     An object that provides physics-related capabilities and
+     animations for its dynamic items, and provides the context
+     for those animations.
+     
+     A dynamic item is any iOS or custom object that conforms to
+     the UIDynamicItem protocol. The UIView and
+     UICollectionViewLayoutAttributes classes implement this
+     protocol in iOS 7 and later. You can implement this protocol
+     to use a dynamic animator with custom objects for such
+     purposes as reacting to rotation or position changes
+     computed by an animator.
+     
+     To use dynamics, configure one or more dynamic
+     behaviors—including providing each with a set of dynamic
+     items—and then add those behaviors to a dynamic animator.
+     
+     You specify dynamic behaviors using any of the iOS primitive
+     dynamic behavior classes: UIAttachmentBehavior,
+     UICollisionBehavior, UIDynamicItemBehavior, UIGravityBehavior,
+     UIPushBehavior, and UISnapBehavior. Each of these provides
+     configuration options and lets you associate one or more
+     dynamic items to the behavior. To activate a behavior, add
+     it to an animator.
+     
+     A dynamic animator interacts with each of its dynamic items
+     as follows:
+     
+     1. Before adding an item to a behavior, you specify the
+     item’s starting position, rotation, and bounds (to do so,
+     use properties of the item’s class, such as the center,
+     transform, and bounds properties in the case of a
+     UIView-based item)
+     
+     2. After you add the behavior to an animator, the animator
+     takes over: it updates the item’s position and rotation as
+     animation proceeds (see the UIDynamicItem protocol)
+     
+     3. You can programmatically update an item’s state in the
+     midst of an animation, after which the animator takes back
+     control of the item’s animation, relative to the state you
+     specified (see the updateItemUsingCurrentState: method)
+     
+     You can define composite behaviors using the addChildBehavior:
+     method of the UIDynamicBehavior parent behavior class. The
+     set of behaviors you add to an animator constitute a behavior
+     hierarchy. Each behavior instance you associate with an
+     animator can be present only once in the hierarchy.
+     
+     To employ a dynamic animator, first identify the type of
+     dynamic items you want to animate. This choice determines
+     which initializer to call, and this in turn determines
+     how the coordinate system gets set up. The three ways to
+     initialize an animator, the dynamic items you can then use,
+     and the resulting coordinate system, are as follows:
+     
+     •  To animate views, create an animator with the
+        initWithReferenceView: method. The coordinate system
+        of the reference view serves as the coordinate system for
+        the animator’s behaviors and items. Each dynamic item you
+        associate with this sort of animator must be a UIView
+        object and must descend from the reference view.
+     
+        You can define a boundary, for items participating in a
+        collision behavior, relative to the bounds of the reference
+        view. See the setTranslatesReferenceBoundsIntoBoundaryWithInsets:
+        method.
 
+     •  To animate collection views, create an animator with
+        the initWithCollectionViewLayout: method. The resulting
+        animator employs a collection view layout (an object of
+        the UICollectionViewLayout class) for its coordinate system.
+        The dynamic items in this sort of animator must be
+        UICollectionViewLayoutAttributes objects that are part
+        of the layout.
+     
+        You can define a boundary, for items participating in a
+        collision behavior, relative to the bounds of the collection
+        view layout. See the setTranslatesReferenceBoundsIntoBoundaryWithInsets:
+        method.
+     
+        A collection view animator automatically calls the invalidateLayout
+        method as needed, and automatically pauses and resumes animation,
+        as appropriate, when you change a collection view’s layout.
+     
+     •  To employ a dynamic animator with other objects that conform
+        to the UIDynamicItem protocol, create an animator with the
+        inherited init method. The resulting animator employs an
+        abstract coordinate system, not tied to the screen or to any view.
+     
+        There is no reference boundary to refer to when defining a
+        collision boundary for use with this sort of animator. However,
+        you can still, in a collision behavior, specify custom boundaries
+        as described in UICollisionBehavior.
+     
+     All types of dynamic animators share the following characteristics:
+     •  Each dynamic animator is independent of other dynamic animators
+        you create
+     
+     •  You can associate a given dynamic item with multiple behaviors,
+        provided those behaviors belong to the same animator
+     
+     •  An animator automatically pauses when all its items are at
+        rest, and automatically resumes when a behavior parameter
+        changes or a behavior or item is added or removed
+
+     You can implement a delegate to respond to changes in animator
+     pause/resumption status, using the dynamicAnimatorDidPause: and
+     dynamicAnimatorWillResume: methods of the UIDynamicAnimatorDelegate
+     protocol.
+     */
+    
+    
+    /*
+     Dynamic Items
+
+     - UIDynamicItem
+     A set of methods that can make a custom object eligible to
+     participate in UIKit Dynamics.
+     
+     - UIDynamicItemBehavior
+     A base dynamic animation configuration for one or more dynamic items.
+     
+     - UIDynamicItemGroup
+     A dynamic item that comprises multiple other dynamic items.
+     */
+    
+    
+    /*
+     Behaviors
+     
+     - UIDynamicBehavior
+     An object that confers a behavioral configuration on one or
+     more dynamic items, for their participation in 2D animation.
+     
+     - UIAttachmentBehavior
+     A relationship between two dynamic items, or between a dynamic
+     item and an anchor point.
+     
+     - UICollisionBehavior
+     An object that confers to a specified array of dynamic items
+     the ability to engage in collisions with each other and with
+     the behavior’s specified boundaries.
+     
+     - UIFieldBehavior
+     An object that applies field-based physics to dynamic items.
+     
+     - UIGravityBehavior
+     An object that applies a gravity-like force to all of its
+     associated dynamic items.
+     
+     - UIPushBehavior
+     A behavior that applies a continuous or instantaneous force
+     to one or more dynamic items, causing those items to change
+     position accordingly.
+     
+     - UISnapBehavior
+     A spring-like behavior whose initial motion is damped over time
+     so that the object settles at a specific point.
+     */
+    
+    
+    /*
+     Animation Regions
+     
+     UIRegion
+     A shape for use in UIKit Dynamics.
+     */
+    
+    
+    
+#pragma mark -- Parallax Effects
+
+    /*
+     View-Based Effects
+     
+     - UIMotionEffectGroup
+     A collection of motion effects that you want to apply to a
+     view at the same time.
+     
+     - UIInterpolatingMotionEffect
+     An object that maps the horizontal or vertical tilt of a
+     device to values that you specify so that UIKit can apply
+     those values to your views.
+     */
+    
+    /*
+     Custom Motion Effects
+     
+     UIMotionEffect
+     An abstract superclass for defining motion-based modifiers
+     for views.
+     */
+    
+    
+    
+#pragma mark -- Haptic Feedback
+    
+    /*
+     Provide haptic feedback in response to specific types of events.
+     
+     - UIFeedbackGenerator
+     The abstract superclass for all feedback generators.
+     
+     - UIImpactFeedbackGenerator
+     A concrete UIFeedbackGenerator subclass that creates haptics
+     to simulate physical impacts.
+     
+     - UINotificationFeedbackGenerator
+     A concrete UIFeedbackGenerator subclass that creates haptics
+     to communicate successes, failures, and warnings.
+     
+     - UISelectionFeedbackGenerator
+     A concrete UIFeedbackGenerator subclass that creates haptics
+     to indicate a change in selection.
+     */
+    
+    
+//    UIFeedbackGenerator *feedbackGenerator = [UIFeedbackGenerator new];
+//    [feedbackGenerator prepare];
+
+    
+    UIImpactFeedbackGenerator *impactFeedbackGenerator = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleHeavy];
+    [impactFeedbackGenerator prepare];
+    [impactFeedbackGenerator impactOccurred];
+//    UINotificationFeedbackGenerator
+//    UISelectionFeedbackGenerator
+    
+    
+    UILabel *label = [UILabel new];
+    label.textColor = UIColor.redColor;
+    
     
     
 }

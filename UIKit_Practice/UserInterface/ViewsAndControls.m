@@ -20,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = UIColor.whiteColor;
+    
     /*
      Views and Controls
      
@@ -43,12 +45,16 @@
      •  Respond to focus changes
      •  Animate the size, position, and apprearance attributes of
         the view.
+     
+     UIView is the root class for all views and defines their common
+     behavior. UIControl defines additional behaviors that are
+     specific to buttons, switches, and other views designed for
+     user interactions.
      */
     
     
-    /*
-     View Fundamentals
-     */
+    
+#pragma mark -- View Fundamentals
     
     /**
      UIView
@@ -139,7 +145,7 @@
      the next drawing cycle to update the view. you can call these methods
      on multiple views to update them at the same time.
      
-     ⚠️ If you are using OpenGL ES to to your drawingm you should use the
+     ⚠️ If you are using OpenGL ES to to your drawing you should use the
         GLKView class instead of subclassing UIView.
      */
     
@@ -169,22 +175,203 @@
     /**
      Threading Considerations
      
-     
+     Manipulations to your application’s user interface must
+     occur on the main thread. Thus, you should always call
+     the methods of the UIView class from code running in the
+     main thread of your application. The only time this may
+     not be strictly necessary is when creating the view object
+     itself, but all other manipulations should occur on the
+     main thread.
      */
+    
+    /**
+     Subclassing Notes
+     
+     The UIView class is a key subclassing point for visual
+     content that also requires user interactions. Although
+     there are many good reasons to subclass UIView, it is
+     recommended that you do so only when the basic UIView
+     class or the standard system views do not provide the
+     capabilities that you need. Subclassing requires more
+     work on your part to implement the view and to tune its
+     performance.
+     */
+    
+    /**
+     Methods to Override
 
-    SubView *view = [[SubView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    view.backgroundColor = UIColor.redColor;
-    [self.view addSubview:view];
+     When subclassing UIView, there are only a handful of
+     methods you should override and many methods that you
+     might override depending on your needs. Because UIView
+     is a highly configurable class, there are also many ways
+     to implement sophisticated view behaviors without
+     overriding custom methods, which are discussed in the
+     Alternatives to Subclassing section. In the meantime,
+     the following list includes the methods you might consider
+     overriding in your UIView subclasses:
+     
+     •  Initialization:
+        ◦   initWithFrame: - It is recommended that you implement
+            this method. You can also implement custom initialization
+            methods in addition to, or instead of, this method.
+        ◦   initWithCoder: - Implement this method if you load your
+            view from storyboards or nib files and your view requires
+            custom initialization.
+        ◦   layerClass Use this property only if you want your view
+            to use a different Core Animation layer for its backing
+            store. For example, if your view uses tiling to display
+            a large scrollable area, you might want to set the property
+            to the CATiledLayer class.
+        
+     •  Drawing and printing:
+        ◦   drawRect: - Implement this method if your view draws
+            custom content. If your view does not do any custom drawing,
+            avoid overriding this method.
+        ◦   drawRect:forViewPrintFormatter: - Implement this method
+            only if you want to draw your view’s content differently during printing.
+     •  Layout and Constraints:
+        ◦   requiresConstraintBasedLayout Use this property if your
+            view class requires constraints to work properly.
+        ◦   updateConstraints - Implement this method if your view
+            needs to create custom constraints between your subviews.
+        ◦   alignmentRectForFrame:, frameForAlignmentRect: - Implement
+            these methods to override how your views are aligned to other views.
+        ◦   didAddSubview:, willRemoveSubview: - Implement these methods as
+            needed to track the additions and removals of subviews.
+        ◦   willMoveToSuperview:, didMoveToSuperview - Implement these
+            methods as needed to track the movement of the current view in
+            your view hierarchy.
+     •  Event Handling:
+        ◦   gestureRecognizerShouldBegin: - Implement this method if
+            your view handles touch events directly and might want to
+            prevent attached gesture recognizers from triggering additional actions.
+        ◦   touchesBegan:withEvent:, touchesMoved:withEvent:,
+            touchesEnded:withEvent:,  touchesCancelled:withEvent:
+            - Implement these methods if you need to handle touch events
+            directly. (For gesture-based input, use gesture recognizers.)
+     */
+    
+    
+    /**
+     Alternatives to Subclassing
+
+     Many view behaviors can be configured without the need for
+     subclassing. Before you start overriding methods, consider
+     whether modifying the following properties or behaviors would
+     provide the behavior you need.
+
+     •  addConstraint: - Define automatic layout behavior for the
+        view and its subviews.
+     •  autoresizingMask - Provides automatic layout behavior when the
+        superview’s frame changes. These behaviors can be combined
+        with constraints.
+     •  contentMode - Provides layout behavior for the view’s content,
+        as opposed to the frame of the view. This property also
+        affects how the content is scaled to fit the view and
+        whether it is cached or redrawn.
+     •  hidden or alpha - Change the transparency of the view as
+        a whole rather than hiding or applying alpha to your view’s
+        rendered content.
+     •  backgroundColor - Set the view’s color rather than drawing
+        that color yourself.
+     •  Subviews - Rather than draw your content using a drawRect:
+        method, embed image and label subviews with the content
+        you want to present.
+     •  Gesture recognizers - Rather than subclass to intercept and
+        handle touch events yourself, you can use gesture recognizers
+        to send an Target-Action to a target object.
+     •  Animations - Use the built-in animation support rather than
+        trying to animate changes yourself. The animation support
+        provided by Core Animation is fast and easy to use.
+     •  Image-based backgrounds - For views that display relatively
+        static content, consider using a UIImageView object with
+        gesture recognizers instead of subclassing and drawing the
+        image yourself. Alternatively, you can also use a generic
+        UIView object and assign your image as the content of the
+        view’s CALayer object.
+     
+     Animations are another way to make visible changes to a view
+     without requiring you to subclass and implement complex drawing
+     code. Many properties of the UIView class are animatable, which
+     means changes to those properties can trigger system-generated
+     animations. Starting animations requires as little as one line
+     of code to indicate that any changes that follow should be
+     animated. For more information about animation support for
+     views, see Animations.
+     */
+    
+    
+#pragma mark -- Container Views
+
+    
+#pragma mark -- Container Views
+
+
+#pragma mark -- Content Views
+
+    
+#pragma mark -- Controls
+    
+    
+#pragma mark -- Text Views
+    
+    
+#pragma mark -- Search Field
+    
+    
+#pragma mark -- Visual Effects
+    
+    
+
+//    SubView *view = [[SubView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+//    view.backgroundColor = UIColor.redColor;
+//    [self.view addSubview:view];
+    
   
+    UIView *subView = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    subView.backgroundColor = UIColor.yellowColor;
+    [self.view addSubview:subView];
+    
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+    [subView addGestureRecognizer:panGesture];
     
     
     // Do any additional setup after loading the view.
 }
 
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+    UITouch *touch = touches.allObjects.firstObject;
+    NSLog(@"%@",touch);
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesEnded:touches withEvent:event];
+    UITouch *touch = touches.allObjects.firstObject;
+    UIView *touchView = touch.view;
+    [UIView animateWithDuration:0.25 animations:^{
+        if (CGRectEqualToRect(touchView.frame, [UIScreen mainScreen].bounds)) {
+            touchView.frame = CGRectMake(100, 100, 100, 100);
+        }else {
+            touchView.frame = [UIScreen mainScreen].bounds;
+        }
+        [self.view.window addSubview:touchView];
+    } completion:^(BOOL finished) {
+    }];
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesMoved:touches withEvent:event];
+}
 
 
-
+- (void)pan:(UIGestureRecognizer *)gesture {
+    
+    if (gesture.state == UIGestureRecognizerStateEnded) {
+        
+    }
+}
 
 
 
