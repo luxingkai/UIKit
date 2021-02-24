@@ -15,12 +15,19 @@
 
 @end
 
-@implementation ViewsAndControls
+@implementation ViewsAndControls {
+    UIView *_subView;
+    CGRect _screenRect;
+    CGPoint _began;
+    CGPoint _change;
+    CGFloat _scale;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.view.backgroundColor = UIColor.whiteColor;
+    _screenRect = self.view.frame;
     
     /*
      Views and Controls
@@ -39,12 +46,12 @@
      
      You can also use views to do any of the following:
      •  Respond to touches and other events(either directly or in
-        coordination with gesture recognizers).
+     coordination with gesture recognizers).
      •  Draw custom content using Core Graphics or UIKit classes.
      •  Support drag and drop interactions.
      •  Respond to focus changes
      •  Animate the size, position, and apprearance attributes of
-        the view.
+     the view.
      
      UIView is the root class for all views and defines their common
      behavior. UIControl defines additional behaviors that are
@@ -110,6 +117,7 @@
      without changing its frame or bounds properties directly.
      */
     
+    
     /**
      Creating a View
      
@@ -146,7 +154,7 @@
      on multiple views to update them at the same time.
      
      ⚠️ If you are using OpenGL ES to to your drawing you should use the
-        GLKView class instead of subclassing UIView.
+     GLKView class instead of subclassing UIView.
      */
     
     /**
@@ -199,7 +207,7 @@
     
     /**
      Methods to Override
-
+     
      When subclassing UIView, there are only a handful of
      methods you should override and many methods that you
      might override depending on your needs. Because UIView
@@ -211,84 +219,84 @@
      overriding in your UIView subclasses:
      
      •  Initialization:
-        ◦   initWithFrame: - It is recommended that you implement
-            this method. You can also implement custom initialization
-            methods in addition to, or instead of, this method.
-        ◦   initWithCoder: - Implement this method if you load your
-            view from storyboards or nib files and your view requires
-            custom initialization.
-        ◦   layerClass Use this property only if you want your view
-            to use a different Core Animation layer for its backing
-            store. For example, if your view uses tiling to display
-            a large scrollable area, you might want to set the property
-            to the CATiledLayer class.
-        
+     ◦   initWithFrame: - It is recommended that you implement
+     this method. You can also implement custom initialization
+     methods in addition to, or instead of, this method.
+     ◦   initWithCoder: - Implement this method if you load your
+     view from storyboards or nib files and your view requires
+     custom initialization.
+     ◦   layerClass Use this property only if you want your view
+     to use a different Core Animation layer for its backing
+     store. For example, if your view uses tiling to display
+     a large scrollable area, you might want to set the property
+     to the CATiledLayer class.
+     
      •  Drawing and printing:
-        ◦   drawRect: - Implement this method if your view draws
-            custom content. If your view does not do any custom drawing,
-            avoid overriding this method.
-        ◦   drawRect:forViewPrintFormatter: - Implement this method
-            only if you want to draw your view’s content differently during printing.
+     ◦   drawRect: - Implement this method if your view draws
+     custom content. If your view does not do any custom drawing,
+     avoid overriding this method.
+     ◦   drawRect:forViewPrintFormatter: - Implement this method
+     only if you want to draw your view’s content differently during printing.
      •  Layout and Constraints:
-        ◦   requiresConstraintBasedLayout Use this property if your
-            view class requires constraints to work properly.
-        ◦   updateConstraints - Implement this method if your view
-            needs to create custom constraints between your subviews.
-        ◦   alignmentRectForFrame:, frameForAlignmentRect: - Implement
-            these methods to override how your views are aligned to other views.
-        ◦   didAddSubview:, willRemoveSubview: - Implement these methods as
-            needed to track the additions and removals of subviews.
-        ◦   willMoveToSuperview:, didMoveToSuperview - Implement these
-            methods as needed to track the movement of the current view in
-            your view hierarchy.
+     ◦   requiresConstraintBasedLayout Use this property if your
+     view class requires constraints to work properly.
+     ◦   updateConstraints - Implement this method if your view
+     needs to create custom constraints between your subviews.
+     ◦   alignmentRectForFrame:, frameForAlignmentRect: - Implement
+     these methods to override how your views are aligned to other views.
+     ◦   didAddSubview:, willRemoveSubview: - Implement these methods as
+     needed to track the additions and removals of subviews.
+     ◦   willMoveToSuperview:, didMoveToSuperview - Implement these
+     methods as needed to track the movement of the current view in
+     your view hierarchy.
      •  Event Handling:
-        ◦   gestureRecognizerShouldBegin: - Implement this method if
-            your view handles touch events directly and might want to
-            prevent attached gesture recognizers from triggering additional actions.
-        ◦   touchesBegan:withEvent:, touchesMoved:withEvent:,
-            touchesEnded:withEvent:,  touchesCancelled:withEvent:
-            - Implement these methods if you need to handle touch events
-            directly. (For gesture-based input, use gesture recognizers.)
+     ◦   gestureRecognizerShouldBegin: - Implement this method if
+     your view handles touch events directly and might want to
+     prevent attached gesture recognizers from triggering additional actions.
+     ◦   touchesBegan:withEvent:, touchesMoved:withEvent:,
+     touchesEnded:withEvent:,  touchesCancelled:withEvent:
+     - Implement these methods if you need to handle touch events
+     directly. (For gesture-based input, use gesture recognizers.)
      */
     
     
     /**
      Alternatives to Subclassing
-
+     
      Many view behaviors can be configured without the need for
      subclassing. Before you start overriding methods, consider
      whether modifying the following properties or behaviors would
      provide the behavior you need.
-
+     
      •  addConstraint: - Define automatic layout behavior for the
-        view and its subviews.
+     view and its subviews.
      •  autoresizingMask - Provides automatic layout behavior when the
-        superview’s frame changes. These behaviors can be combined
-        with constraints.
+     superview’s frame changes. These behaviors can be combined
+     with constraints.
      •  contentMode - Provides layout behavior for the view’s content,
-        as opposed to the frame of the view. This property also
-        affects how the content is scaled to fit the view and
-        whether it is cached or redrawn.
+     as opposed to the frame of the view. This property also
+     affects how the content is scaled to fit the view and
+     whether it is cached or redrawn.
      •  hidden or alpha - Change the transparency of the view as
-        a whole rather than hiding or applying alpha to your view’s
-        rendered content.
+     a whole rather than hiding or applying alpha to your view’s
+     rendered content.
      •  backgroundColor - Set the view’s color rather than drawing
-        that color yourself.
+     that color yourself.
      •  Subviews - Rather than draw your content using a drawRect:
-        method, embed image and label subviews with the content
-        you want to present.
+     method, embed image and label subviews with the content
+     you want to present.
      •  Gesture recognizers - Rather than subclass to intercept and
-        handle touch events yourself, you can use gesture recognizers
-        to send an Target-Action to a target object.
+     handle touch events yourself, you can use gesture recognizers
+     to send an Target-Action to a target object.
      •  Animations - Use the built-in animation support rather than
-        trying to animate changes yourself. The animation support
-        provided by Core Animation is fast and easy to use.
+     trying to animate changes yourself. The animation support
+     provided by Core Animation is fast and easy to use.
      •  Image-based backgrounds - For views that display relatively
-        static content, consider using a UIImageView object with
-        gesture recognizers instead of subclassing and drawing the
-        image yourself. Alternatively, you can also use a generic
-        UIView object and assign your image as the content of the
-        view’s CALayer object.
+     static content, consider using a UIImageView object with
+     gesture recognizers instead of subclassing and drawing the
+     image yourself. Alternatively, you can also use a generic
+     UIView object and assign your image as the content of the
+     view’s CALayer object.
      
      Animations are another way to make visible changes to a view
      without requiring you to subclass and implement complex drawing
@@ -300,15 +308,673 @@
      views, see Animations.
      */
     
+    /**
+     Creating a View Object
+     
+     - initWithFrame:
+     Initializes and returns a newly allocated view object with the
+     specified frame rectangle.
+     
+     - initWithCoder:
+     */
+    
+    /**
+     Configuring a View’s Visual Appearance
+     
+     backgroundColor
+     The view’s background color.
+     
+     hidden
+     A Boolean value that determines whether the view is hidden.
+     
+     alpha
+     The view’s alpha value.
+     
+     opaque
+     A Boolean value that determines whether the view is opaque.
+     
+     tintColor
+     The first nondefault tint color value in the view’s hierarchy,
+     ascending from and starting with the view itself.
+     
+     tintAdjustmentMode
+     The first non-default tint adjustment mode value in the
+     view’s hierarchy, ascending from and starting with the view itself.
+     
+     clipsToBounds
+     A Boolean value that determines whether subviews are confined to
+     the bounds of the view.
+     
+     clearsContextBeforeDrawing
+     A Boolean value that determines whether the view’s bounds
+     should be automatically cleared before drawing.
+     
+     maskView
+     An optional view whose alpha channel is used to mask a
+     view’s content.
+     
+     layerClass
+     Returns the class used to create the layer for instances of
+     this class.
+     
+     layer
+     The view’s Core Animation layer used for rendering.
+     */
+    
+    /**
+     Configuring the Event-Related Behavior
+     
+     userInteractionEnabled
+     A Boolean value that determines whether user events are ignored
+     and removed from the event queue.
+     
+     multipleTouchEnabled
+     A Boolean value that indicates whether the view receives more
+     than one touch at a time.
+     
+     exclusiveTouch
+     A Boolean value that indicates whether the receiver handles
+     touch events exclusively.
+     */
+    
+    
+    /**
+     Configuring the Bounds and Frame Rectangles
+     
+     frame
+     The frame rectangle, which describes the view’s location
+     and size in its superview’s coordinate system.
+     
+     bounds
+     The bounds rectangle, which describes the view’s location
+     and size in its own coordinate system.
+     
+     center
+     The center point of the view's frame rectangle.
+     
+     transform
+     Specifies the transform applied to the view, relative to
+     the center of its bounds.
+     */
+    
+    /**
+     Managing the View Hierarchy
+     
+     superview
+     The receiver’s superview, or nil if it has none.
+     
+     subviews
+     The receiver’s immediate subviews.
+     
+     window
+     The receiver’s window object, or nil if it has none.
+     
+     - addSubview:
+     Adds a view to the end of the receiver’s list of subviews.
+     
+     - bringSubviewToFront:
+     Moves the specified subview so that it appears on top of its
+     siblings.
+     
+     - sendSubviewToBack:
+     Moves the specified subview so that it appears behind its
+     siblings.
+     
+     - removeFromSuperview
+     Unlinks the view from its superview and its window, and
+     removes it from the responder chain.
+     
+     - insertSubview:atIndex:
+     Inserts a subview at the specified index.
+     
+     - insertSubview:aboveSubview:
+     Inserts a view above another view in the view hierarchy.
+     
+     - insertSubview:belowSubview:
+     Inserts a view below another view in the view hierarchy.
+     
+     - exchangeSubviewAtIndex:withSubviewAtIndex:
+     Exchanges the subviews at the specified indices.
+     
+     - isDescendantOfView:
+     Returns a Boolean value indicating whether the receiver is a
+     subview of a given view or identical to that view.
+     */
+    
+    /**
+     Observing View-Related Changes
+     
+     - didAddSubview:
+     Tells the view that a subview was added.
+     
+     - willRemoveSubview:
+     Tells the view that a subview is about to be removed.
+     
+     - willMoveToSuperview:
+     Tells the view that its superview is about to change to the
+     specified superview.
+     
+     - didMoveToSuperview
+     Tells the view that its superview changed.
+     
+     - willMoveToWindow:
+     Tells the view that its window object is about to change.
+     
+     - didMoveToWindow
+     Tells the view that its window object changed.
+     */
+    
+    /**
+     Configuring Content Margins
+
+     directionalLayoutMargins
+     The default spacing to use when laying out content in a view,
+     taking into account the current language direction.
+     
+     layoutMargins
+     The default spacing to use when laying out content in the view.
+     
+     preservesSuperviewLayoutMargins
+     A Boolean value indicating whether the current view also
+     respects the margins of its superview.
+     
+     - layoutMarginsDidChange
+     Notifies the view that the layout margins changed.
+     */
+    
+    /**
+     Getting the Safe Area
+
+     safeAreaInsets
+     The insets that you use to determine the safe area for this view.
+     
+     safeAreaLayoutGuide
+     The layout guide representing the portion of your view that
+     is unobscured by bars and other content.
+     
+     - safeAreaInsetsDidChange
+     Called when the safe area of the view changes.
+     
+     insetsLayoutMarginsFromSafeArea
+     A Boolean value indicating whether the view's layout margins
+     are updated automatically to reflect the safe area.
+     */
+    
+    /**
+     Managing the View’s Constraints
+
+     constraints
+     The constraints held by the view.
+     
+     - addConstraint:
+     Adds a constraint on the layout of the receiving view or
+     its subviews.
+     
+     - addConstraints:
+     Adds multiple constraints on the layout of the receiving
+     view or its subviews.
+     
+     - removeConstraint:
+     Removes the specified constraint from the view.
+     
+     - removeConstraints:
+     Removes the specified constraints from the view.
+     */
+    
+    /**
+     Creating Constraints Using Layout Anchors
+
+     bottomAnchor
+     A layout anchor representing the bottom edge of the view’s frame.
+     
+     centerXAnchor
+     A layout anchor representing the horizontal center of the
+     view’s frame.
+     
+     centerYAnchor
+     A layout anchor representing the vertical center of the
+     view’s frame.
+     
+     firstBaselineAnchor
+     A layout anchor representing the baseline for the topmost
+     line of text in the view.
+     
+     heightAnchor
+     A layout anchor representing the height of the view’s frame.
+     
+     lastBaselineAnchor
+     A layout anchor representing the baseline for the bottommost
+     line of text in the view.
+     
+     leadingAnchor
+     A layout anchor representing the leading edge of the view’s frame.
+     
+     leftAnchor
+     A layout anchor representing the left edge of the view’s frame.
+     
+     rightAnchor
+     A layout anchor representing the right edge of the view’s frame.
+     
+     topAnchor
+     A layout anchor representing the top edge of the view’s frame.
+     
+     trailingAnchor
+     A layout anchor representing the trailing edge of the view’s frame.
+     
+     widthAnchor
+     A layout anchor representing the width of the view’s frame.
+     */
+    
+    /**
+     Working with Layout Guides
+     
+     - addLayoutGuide:
+     Adds the specified layout guide to the view.
+     
+     layoutGuides
+     The array of layout guide objects owned by this view.
+     
+     layoutMarginsGuide
+     A layout guide representing the view’s margins.
+     
+     readableContentGuide
+     A layout guide representing an area with a readable width
+     within the view.
+     
+     - removeLayoutGuide:
+     Removes the specified layout guide from the view.
+     */
+    
+    
+    /**
+     Measuring in Auto Layout
+
+     - systemLayoutSizeFittingSize:
+     Returns the optimal size of the view based on its current
+     constraints.
+     
+     - systemLayoutSizeFittingSize:withHorizontalFittingPriority:
+     verticalFittingPriority:
+     Returns the optimal size of the view based on its constraints
+     and the specified fitting priorities.
+     
+     intrinsicContentSize
+     The natural size for the receiving view, considering only
+     properties of the view itself.
+     
+     - invalidateIntrinsicContentSize
+     Invalidates the view’s intrinsic content size.
+     
+     - contentCompressionResistancePriorityForAxis:
+     Returns the priority with which a view resists being made
+     smaller than its intrinsic size.
+     
+     - setContentCompressionResistancePriority:forAxis:
+     Sets the priority with which a view resists being made smaller
+     than its intrinsic size.
+     
+     - contentHuggingPriorityForAxis:
+     Returns the priority with which a view resists being made larger
+     than its intrinsic size.
+     
+     - setContentHuggingPriority:forAxis:
+     Sets the priority with which a view resists being made larger
+     than its intrinsic size
+     */
+    
+    /**
+     Aligning Views in Auto Layout
+
+     - alignmentRectForFrame:
+     Returns the view’s alignment rectangle for a given frame.
+     
+     - frameForAlignmentRect:
+     Returns the view’s frame for a given alignment rectangle.
+     
+     alignmentRectInsets
+     The insets from the view’s frame that define its alignment rectangle.
+     
+     viewForFirstBaselineLayout
+     Returns a view used to satisfy first baseline constraints.
+     
+     viewForLastBaselineLayout
+     Returns a view used to satisfy last baseline constraints.
+     */
+    
+    /**
+     Triggering Auto Layout
+
+     - needsUpdateConstraints
+     A Boolean value that determines whether the view’s constraints
+     need updating.
+     
+     - setNeedsUpdateConstraints
+     Controls whether the view’s constraints need updating.
+     
+     - updateConstraints
+     Updates constraints for the view.
+     
+     - updateConstraintsIfNeeded
+     Updates the constraints for the receiving view and its subviews.
+     */
+
+    /**
+     Debugging Auto Layout
+
+     - constraintsAffectingLayoutForAxis:
+     Returns the constraints impacting the layout of the view
+     for a given axis.
+     
+     hasAmbiguousLayout
+     A Boolean value that determines whether the constraints
+     impacting the layout of the view incompletely specify the
+     location of the view.
+     
+     - exerciseAmbiguityInLayout
+     Randomly changes the frame of a view with an ambiguous layout
+     between the different valid values.
+     */
+    
+    /**
+     Configuring the Resizing Behavior
+
+     contentMode
+     A flag used to determine how a view lays out its content
+     when its bounds change.
+     
+     UIViewContentMode
+     Options to specify how a view adjusts its content when its size changes.
+     
+     - sizeThatFits:
+     Asks the view to calculate and return the size that best fits
+     the specified size.
+     
+     - sizeToFit
+     Resizes and moves the receiver view so it just encloses its subviews.
+     
+     autoresizesSubviews
+     A Boolean value that determines whether the receiver automatically
+     resizes its subviews when its bounds change.
+     
+     autoresizingMask
+     An integer bit mask that determines how the receiver resizes itself
+     when its superview’s bounds change.
+     */
+    
+    /**
+     Laying out Subviews
+     Lay out views manually if your app does not use Auto Layout.
+
+     - layoutSubviews
+     Lays out subviews.
+     
+     - setNeedsLayout
+     Invalidates the current layout of the receiver and triggers
+     a layout update during the next update cycle.
+     
+     - layoutIfNeeded
+     Lays out the subviews immediately, if layout updates are pending.
+     
+     requiresConstraintBasedLayout
+     A Boolean value that indicates whether the receiver depends
+     on the constraint-based layout system.
+     
+     translatesAutoresizingMaskIntoConstraints
+     A Boolean value that determines whether the view’s autoresizing
+     mask is translated into Auto Layout constraints.
+     */
+    
+    
+    /**
+     Adjusting the User Interface
+     
+     overrideUserInterfaceStyle
+     The user interface style adopted by the view and all of its subviews.
+     
+     semanticContentAttribute
+     A semantic description of the view’s contents, used to determine
+     whether the view should be flipped when switching between
+     left-to-right and right-to-left layouts.
+     
+     effectiveUserInterfaceLayoutDirection
+     The user interface layout direction appropriate for arranging
+     the immediate content of the view.
+     
+     + userInterfaceLayoutDirectionForSemanticContentAttribute:
+     Returns the user interface direction for the given semantic
+     content attribute.
+     
+     + userInterfaceLayoutDirectionForSemanticContentAttribute:relativeToLayoutDirection:
+     Returns the layout direction implied by the specified semantic
+     content attribute, relative to the specified layout direction.
+     */
+    
+    
+    /**
+     Adding and Removing Interactions
+
+     - addInteraction:
+     Adds an interaction to the view.
+     
+     - removeInteraction:
+     Removes an interaction from the view.
+     
+     interactions
+     The array of interactions for the view.
+     
+     UIInteraction
+     The protocol that an interaction implements to access the view that owns it.
+     */
+    UITextInteraction *interaction = [UITextInteraction new];
+    
+    
+    /**
+     Drawing and Updating the View
+
+     - drawRect:
+     Draws the receiver’s image within the passed-in rectangle.
+     
+     - setNeedsDisplay
+     Marks the receiver’s entire bounds rectangle as needing
+     to be redrawn.
+     
+     - setNeedsDisplayInRect:
+     Marks the specified rectangle of the receiver as needing
+     to be redrawn.
+     
+     contentScaleFactor
+     The scale factor applied to the view.
+     
+     - tintColorDidChange
+     Called by the system when the tintColor property changes.
+     */
+    
+    
+    /**
+     Managing Gesture Recognizers
+
+     - addGestureRecognizer:
+     Attaches a gesture recognizer to the view.
+     
+     - removeGestureRecognizer:
+     Detaches a gesture recognizer from the receiving view.
+     
+     gestureRecognizers
+     The gesture-recognizer objects currently attached to the view.
+     
+     - gestureRecognizerShouldBegin:
+     Asks the view if the gesture recognizer should be allowed
+     to continue tracking touch events.
+     */
+    
+    
+    /**
+     Observing Focus
+
+     canBecomeFocused
+     A Boolean value that indicates whether the view is currently
+     capable of being focused.
+     
+     inheritedAnimationDuration
+     Returns the inherited duration of the current animation.
+     
+     focused
+     A Boolean value that indicates whether the item is currently focused.
+     */
+    
+    
+    /**
+     Using Motion Effects
+
+     - addMotionEffect:
+     Begins applying a motion effect to the view.
+     
+     motionEffects
+     The array of motion effects for the view.
+     
+     - removeMotionEffect:
+     Stops applying a motion effect to the view.
+     */
+    
+    
+    /**
+     Preserving and Restoring State
+
+     restorationIdentifier
+     The identifier that determines whether the view supports
+     state restoration.
+     
+     - encodeRestorableStateWithCoder:
+     Encodes state-related information for the view.
+     
+     - decodeRestorableStateWithCoder:
+     Decodes and restores state-related information for the view.
+     */
+    
+    
+    /**
+     Capturing a View Snapshot
+
+     - snapshotViewAfterScreenUpdates:
+     Returns a snapshot view based on the contents of the current view.
+     
+     - resizableSnapshotViewFromRect:afterScreenUpdates:withCapInsets:
+     Returns a snapshot view based on the specified contents of the
+     current view, with stretchable insets.
+     
+     - drawViewHierarchyInRect:afterScreenUpdates:
+     Renders a snapshot of the complete view hierarchy as visible
+     onscreen into the current context.
+     */
+    
+    
+    /**
+     Identifying the View at Runtime
+
+     tag
+     An integer that you can use to identify view objects in your
+     application.
+     
+     - viewWithTag:
+     Returns the view whose tag matches the specified value.
+     */
+    
+    
+    /**
+     Converting Between View Coordinate Systems
+
+     - convertPoint:toView:
+     Converts a point from the receiver’s coordinate system to that
+     of the specified view.
+     
+     - convertPoint:fromView:
+     Converts a point from the coordinate system of a given view
+     to that of the receiver.
+     
+     - convertRect:toView:
+     Converts a rectangle from the receiver’s coordinate system to
+     that of another view.
+     
+     - convertRect:fromView:
+     Converts a rectangle from the coordinate system of another view
+     to that of the receiver.
+     */
+    
+    
+    /**
+     Hit Testing in a View
+
+     - hitTest:withEvent:
+     Returns the farthest descendant of the receiver in the view
+     hierarchy (including itself) that contains a specified point.
+     
+     - pointInside:withEvent:
+     Returns a Boolean value indicating whether the receiver contains
+     the specified point.
+     */
+    
+    
+    /**
+     Ending a View Editing Session
+
+     - endEditing:
+     Causes the view (or one of its embedded text fields) to resign
+     the first responder status.
+     */
+    
+    
+    /**
+     Animating Views with Block Objects
+
+     + animateWithDuration:delay:options:animations:completion:
+     Animate changes to one or more views using the specified
+     duration, delay, options, and completion handler.
+     
+     + animateWithDuration:animations:completion:
+     Animate changes to one or more views using the specified
+     duration and completion handler.
+     
+     + animateWithDuration:animations:
+     Animate changes to one or more views using the specified duration.
+     
+     + transitionWithView:duration:options:animations:completion:
+     Creates a transition animation for the specified container view.
+     
+     + transitionFromView:toView:duration:options:completion:
+     Creates a transition animation between the specified views
+     using the given parameters.
+     
+     + animateKeyframesWithDuration:delay:options:animations:completion:
+     Creates an animation block object that can be used to set up
+     keyframe-based animations for the current view.
+     
+     + addKeyframeWithRelativeStartTime:relativeDuration:animations:
+     Specifies the timing and animation values for a single frame
+     of a keyframe animation.
+     
+     + performSystemAnimation:onViews:options:animations:completion:
+     Performs a specified system-provided animation on one or more
+     views, along with optional parallel animations that you define.
+     
+     + animateWithDuration:delay:usingSpringWithDamping:initialSpringVelocity:
+     options:animations:completion:
+     Performs a view animation using a timing curve corresponding
+     to the motion of a physical spring.
+     
+     + performWithoutAnimation:
+     Disables a view transition animation.
+     */
+    
+    
     
 #pragma mark -- Container Views
-
+    
     
 #pragma mark -- Container Views
-
-
+    
+    
 #pragma mark -- Content Views
-
+    
     
 #pragma mark -- Controls
     
@@ -322,18 +988,18 @@
 #pragma mark -- Visual Effects
     
     
-
-//    SubView *view = [[SubView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-//    view.backgroundColor = UIColor.redColor;
-//    [self.view addSubview:view];
     
-  
-    UIView *subView = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
-    subView.backgroundColor = UIColor.yellowColor;
-    [self.view addSubview:subView];
+    //    SubView *view = [[SubView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    //    view.backgroundColor = UIColor.redColor;
+    //    [self.view addSubview:view];
+    
+    
+    _subView = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    _subView.backgroundColor = UIColor.yellowColor;
+    [self.view addSubview:_subView];
     
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
-    [subView addGestureRecognizer:panGesture];
+    [_subView addGestureRecognizer:panGesture];
     
     
     // Do any additional setup after loading the view.
@@ -367,10 +1033,28 @@
 
 
 - (void)pan:(UIGestureRecognizer *)gesture {
-    
-    if (gesture.state == UIGestureRecognizerStateEnded) {
-        
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        _began = [gesture locationInView:_subView];
+        NSLog(@"began %@",NSStringFromCGPoint(_began));
     }
+    if (gesture.state == UIGestureRecognizerStateChanged) {
+        _change = [gesture locationInView:_subView];
+        NSLog(@"change %@",NSStringFromCGPoint(_change));
+        CGFloat move = fabs(_change.y - _began.y);
+        _scale = move / 100.0;
+        if (_scale >= 0.4) {return;}
+        _subView.frame = CGRectMake(0, 0, _screenRect.size.width * (1 - _scale), _screenRect.size.height * (1 - _scale));
+    }
+    if (gesture.state == UIGestureRecognizerStateEnded) {
+        if (_scale >= 0.4) {
+            _subView.frame = CGRectMake(100, 100, 100, 100);
+            [self.view addSubview:_subView];
+        }else {
+            _subView.frame = CGRectMake(0, 0, _screenRect.size.width, _screenRect.size.height);
+        }
+    }
+    
+    
 }
 
 
@@ -379,13 +1063,13 @@
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
