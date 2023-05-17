@@ -10,6 +10,7 @@
 #import "SubView.h"
 #import "SGObject.h"
 #import "Object.h"
+#import <ImageIO/ImageIO.h>
 
 @interface ViewsAndControls ()
 
@@ -21,6 +22,7 @@
     CGPoint _began;
     CGPoint _change;
     CGFloat _scale;
+    UILabel *_htmlDocument;
 }
 
 - (void)viewDidLoad {
@@ -28,6 +30,30 @@
     
     self.view.backgroundColor = UIColor.whiteColor;
     _screenRect = self.view.frame;
+    UIEdgeInsets safeArea = self.view.safeAreaInsets;
+    NSLog(@"%@",NSStringFromUIEdgeInsets(safeArea));
+    [self.view setNeedsLayout];
+    
+//    NSString *str = @"<html><head><style type=\"text/css\">body { font-family: Mehr Nastaliq Web; font-size: 22pt; white-space: pre-wrap; text-align: right; lang: en; direction: RTL; -webkit-user-select: none; meta charset=\"UTF-8\" }</style> </head><body leftmargin=\"20\" topmargin=\"0\" rightmargin=\"20\">hello world! Arabic.مُدّعا عَنقا ہے اپنے عالَمِ تقریر کا میری تقریر کا مفہوم چونکہ عنقا یعنی معدوم ہے اور معدوم </body></html>";
+    
+    
+    
+//    NSAttributedString *attributedStr = [[NSAttributedString alloc] initWithData:[str dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentOption:NSHTMLTextDocumentType} documentAttributes:nil error:nil];
+    
+    NSString *string = @"string";
+    _htmlDocument = [[UILabel alloc] initWithFrame:CGRectMake(20, 300, 0, 0)];
+    _htmlDocument.text = string;
+    _htmlDocument.numberOfLines = 1;
+    [self.view addSubview:_htmlDocument];
+    
+    [_htmlDocument sizeToFit];
+    
+    
+    
+//    CGSize fitSize = [htmlDocument sizeThatFits:CGSizeZero];
+//    htmlDocument.frame = CGRectMake(20, 300, fitSize.width, fitSize.height);
+    
+    
     
     /*
      Views and Controls
@@ -51,7 +77,7 @@
      •  Support drag and drop interactions.
      •  Respond to focus changes
      •  Animate the size, position, and apprearance attributes of
-     the view.
+        the view.
      
      UIView is the root class for all views and defines their common
      behavior. UIControl defines additional behaviors that are
@@ -60,8 +86,8 @@
      */
     
     
-    
 #pragma mark -- View Fundamentals
+    
     
     /**
      UIView
@@ -101,7 +127,7 @@
      Views can be nested inside other views to create view hierarchies,
      which offer a convenient way to organize related content. Nesting
      a view creates a parent-child relationship between the child view
-     being nested (known as the subview)and the parent (known as the
+     being nested (known as the subview) and the parent (known as the
      superview). A parent view may contain any number of subViews but
      each subView has only one superview. By default, when a subview's
      visible area extends outside of the bounds of its superview, no
@@ -131,6 +157,7 @@
      in the rest of the view hierarchy.
      https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/index.html#//apple_ref/doc/uid/TP40010853
      */
+
     
     /**
      The View Drawing Cycle
@@ -157,6 +184,7 @@
      GLKView class instead of subclassing UIView.
      */
     
+    
     /**
      Animations
      
@@ -180,6 +208,7 @@
      the animation and drive it interactively.
      */
     
+    
     /**
      Threading Considerations
      
@@ -191,6 +220,7 @@
      itself, but all other manipulations should occur on the
      main thread.
      */
+    
     
     /**
      Subclassing Notes
@@ -204,6 +234,7 @@
      work on your part to implement the view and to tune its
      performance.
      */
+    
     
     /**
      Methods to Override
@@ -219,42 +250,46 @@
      overriding in your UIView subclasses:
      
      •  Initialization:
-     ◦   initWithFrame: - It is recommended that you implement
-     this method. You can also implement custom initialization
-     methods in addition to, or instead of, this method.
-     ◦   initWithCoder: - Implement this method if you load your
-     view from storyboards or nib files and your view requires
-     custom initialization.
-     ◦   layerClass Use this property only if you want your view
-     to use a different Core Animation layer for its backing
-     store. For example, if your view uses tiling to display
-     a large scrollable area, you might want to set the property
-     to the CATiledLayer class.
+        ◦   initWithFrame: - It is recommended that you implement
+            this method. You can also implement custom initialization
+            methods in addition to, or instead of, this method.
+        ◦   initWithCoder: - Implement this method if you load your
+            view from storyboards or nib files and your view requires
+            custom initialization.
+        ◦   layerClass Use this property only if you want your view
+            to use a different Core Animation layer for its backing
+            store. For example, if your view uses tiling to display
+            a large scrollable area, you might want to set the property
+            to the CATiledLayer class.
      
      •  Drawing and printing:
-     ◦   drawRect: - Implement this method if your view draws
-     custom content. If your view does not do any custom drawing,
-     avoid overriding this method.
-     ◦   drawRect:forViewPrintFormatter: - Implement this method
-     only if you want to draw your view’s content differently during printing.
+        ◦   drawRect: - Implement this method if your view draws
+            custom content. If your view does not do any custom drawing,
+            avoid overriding this method.
+        ◦   drawRect:forViewPrintFormatter: - Implement this method
+            only if you want to draw your view’s content differently
+            during printing.
+     
      •  Layout and Constraints:
-     ◦   requiresConstraintBasedLayout Use this property if your
-     view class requires constraints to work properly.
-     ◦   updateConstraints - Implement this method if your view
-     needs to create custom constraints between your subviews.
-     ◦   alignmentRectForFrame:, frameForAlignmentRect: - Implement
-     these methods to override how your views are aligned to other views.
-     ◦   didAddSubview:, willRemoveSubview: - Implement these methods as
-     needed to track the additions and removals of subviews.
-     ◦   willMoveToSuperview:, didMoveToSuperview - Implement these
-     methods as needed to track the movement of the current view in
-     your view hierarchy.
+     
+        ◦   requiresConstraintBasedLayout Use this property if your
+            view class requires constraints to work properly.
+        ◦   updateConstraints - Implement this method if your view
+            needs to create custom constraints between your subviews.
+        ◦   alignmentRectForFrame:, frameForAlignmentRect: - Implement
+            these methods to override how your views are aligned to other views.
+        ◦   didAddSubview:, willRemoveSubview: - Implement these methods as
+            needed to track the additions and removals of subviews.
+        ◦   willMoveToSuperview:, didMoveToSuperview - Implement these
+            methods as needed to track the movement of the current view in
+            your view hierarchy.
      •  Event Handling:
-     ◦   gestureRecognizerShouldBegin: - Implement this method if
-     your view handles touch events directly and might want to
-     prevent attached gesture recognizers from triggering additional actions.
-     ◦   touchesBegan:withEvent:, touchesMoved:withEvent:,
-     touchesEnded:withEvent:,  touchesCancelled:withEvent:
+        ◦   gestureRecognizerShouldBegin: - Implement this method if
+            your view handles touch events directly and might want to
+            prevent attached gesture recognizers from triggering additional actions.
+        ◦   touchesBegan:withEvent:, touchesMoved:withEvent:,
+            touchesEnded:withEvent:,  touchesCancelled:withEvent:
+     
      - Implement these methods if you need to handle touch events
      directly. (For gesture-based input, use gesture recognizers.)
      */
@@ -446,6 +481,7 @@
      
      - didAddSubview:
      Tells the view that a subview was added.
+    ⚠️ The default implementation of this method does nothing. Subclasses can override it to perform additional actions when subviews are added. This method is called in response to adding a subview using any of the relevant view methods.
      
      - willRemoveSubview:
      Tells the view that a subview is about to be removed.
@@ -601,6 +637,10 @@
      intrinsicContentSize
      The natural size for the receiving view, considering only
      properties of the view itself.
+     ⚠️ Custom views typically have content that they display of which the layout system is unaware. Setting this property allows a custom view to communicate to the layout system what size it would like to be based on its content. This intrinsic size must be independent of the content frame, because there’s no way to dynamically communicate a changed width to the layout system based on a changed height, for example.
+
+     If a custom view has no intrinsic size for a given dimension, it can use UIViewNoIntrinsicMetric for that dimension.
+     
      
      - invalidateIntrinsicContentSize
      Invalidates the view’s intrinsic content size.
@@ -622,11 +662,15 @@
      than its intrinsic size
      */
     
+    
     /**
      Aligning Views in Auto Layout
 
      - alignmentRectForFrame:
      Returns the view’s alignment rectangle for a given frame.
+     ⚠️ The constraint-based layout system uses alignment rectangles to align views, rather than their frame. This allows custom views to be aligned based on the location of their content while still having a frame that encompasses any ornamentation they need to draw around their content, such as shadows or reflections.
+     
+     The default implementation returns the view’s frame modified by the view’s alignmentRectInsets. Most custom views can use alignmentRectInsets to specify the location of their content within their frame. Custom views that require arbitrary transformations can override alignmentRectForFrame: and frameForAlignmentRect: to describe the location of their content. These two methods must always be inverses of each other.
      
      - frameForAlignmentRect:
      Returns the view’s frame for a given alignment rectangle.
@@ -653,6 +697,8 @@
      
      - updateConstraints
      Updates constraints for the view.
+    ⚠️ It is almost always cleaner and easier to update a constraint immediately after the affecting change has occurred. For example, if you want to change a constraint in response to a button tap, make that change directly in the button’s action method.
+     You should only override this method when changing constraints in place is too slow, or when a view is producing a number of redundant changes.
      
      - updateConstraintsIfNeeded
      Updates the constraints for the receiving view and its subviews.
@@ -707,6 +753,11 @@
 
      - layoutSubviews
      Lays out subviews.
+    ⚠️ The default implementation of this method does nothing on iOS 5.1 and earlier. Otherwise, the default implementation uses any constraints you have set to determine the size and position of any subviews.
+     
+     Subclasses can override this method as needed to perform more precise layout of their subviews. You should override this method only if the autoresizing and constraint-based behaviors of the subviews do not offer the behavior you want. You can use your implementation to set the frame rectangles of your subviews directly.
+
+     You should not call this method directly. If you want to force a layout update, call the setNeedsLayout method instead to do so prior to the next drawing update. If you want to update the layout of your views immediately, call the layoutIfNeeded method.
      
      - setNeedsLayout
      Invalidates the current layout of the receiver and triggers
@@ -1002,29 +1053,44 @@
     [_subView addGestureRecognizer:panGesture];
     
     
+    UIImage *image = [UIImage imageNamed:@"2.gif"];
+//    NSArray *images = image.images;
+//
+    CGDataProviderRef dataProviderRef = CGImageGetDataProvider(image.CGImage);
+    CGImageSourceRef imageSourceRef = CGImageSourceCreateWithDataProvider(dataProviderRef, NULL);
+    size_t count = CGImageSourceGetCount(imageSourceRef);
+//
+//
+//    NSLog(@"%f",image.duration);
+        
+    
     // Do any additional setup after loading the view.
 }
 
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [super touchesBegan:touches withEvent:event];
-    UITouch *touch = touches.allObjects.firstObject;
-    NSLog(@"%@",touch);
+//    UITouch *touch = touches.allObjects.firstObject;
+//    NSLog(@"%@",touch);
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [super touchesEnded:touches withEvent:event];
-    UITouch *touch = touches.allObjects.firstObject;
-    UIView *touchView = touch.view;
-    [UIView animateWithDuration:0.25 animations:^{
-        if (CGRectEqualToRect(touchView.frame, [UIScreen mainScreen].bounds)) {
-            touchView.frame = CGRectMake(100, 100, 100, 100);
-        }else {
-            touchView.frame = [UIScreen mainScreen].bounds;
-        }
-        [self.view.window addSubview:touchView];
-    } completion:^(BOOL finished) {
-    }];
+//    UITouch *touch = touches.allObjects.firstObject;
+//    UIView *touchView = touch.view;
+//    [UIView animateWithDuration:0.25 animations:^{
+//        if (CGRectEqualToRect(touchView.frame, [UIScreen mainScreen].bounds)) {
+//            touchView.frame = CGRectMake(100, 100, 100, 100);
+//        }else {
+//            touchView.frame = [UIScreen mainScreen].bounds;
+//        }
+//        [self.view.window addSubview:touchView];
+//    } completion:^(BOOL finished) {
+//    }];
+    NSString *newStr = @"new banlance";
+    _htmlDocument.text = newStr;
+    [_htmlDocument sizeToFit];
+    
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -1058,6 +1124,11 @@
 }
 
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    NSLog(@"通过setNeedLayout方法触发重新布局方法");
+}
 
 
 

@@ -140,6 +140,7 @@
      UIResponder and not already part of the responder chain.
      */
     
+    
     /**
      Determining an Event's First Responder
      
@@ -171,6 +172,7 @@
      responder chain. For more information about using gesture
      recognizer’s to handle events, see Handling UIKit Gestures.
      */
+    
     
     /**
      Determining Which Responder Contained a Touch Event
@@ -213,9 +215,9 @@
      the next responder is the view controller; otherwise, the next
      responder is the view’s superview.
      •  UIViewController objects.
-     ◦   If the view controller’s view is the root view of a window,
-     the next responder is the window object.
-     ◦   If the view controller was presented by another view
+        ◦   If the view controller’s view is the root view of a window,
+            the next responder is the window object.
+        ◦   If the view controller was presented by another view
      controller, the next responder is the presenting view controller.
      •  UIWindow objects. The window's next responder is the UIApplication object.
      •  UIApplication object. The next responder is the app delegate, but
@@ -238,8 +240,10 @@
      
      There are several kinds of events, including touch events, motion
      events, remote-control events, and press events. To handle a
-     specific type of event, a responder must override the
+     specific type of event, a responder must override the corresponding
+     methods.
      */
+    
     
     /**
      Managing the Responder Chain
@@ -248,16 +252,54 @@
      Returns the next responder in the responder chain, or nil if there
      is no next responder.
      
+     The UIResponder class does not store or set the next responder automatically,
+     so this method returns nil by default. Subclasses must override this method
+     and return an appropriate next responder. For example, UIView implements this
+     method and returns the UIViewController object that manages it (if it has one)
+     or its superview (if it doesn’t). UIViewController similarly implements the
+     method and returns its view’s superview. UIWindow returns the application
+     object. The shared UIApplication object normally returns nil, but it returns
+     its app delegate if that object is a subclass of UIResponder and has not
+     already been called to handle the event.
+     
+     
      - isFirstResponder
      Returns a Boolean value indicating whether this object is the first
      responder.
+     
      
      - canBecomeFirstResponder
      Returns a Boolean value indicating whether this object can become
      the first responder.
      
+     This method returns NO by default. Subclasses must override this method
+     and return YES to be able to become first responder.
+     Do not call this method on a view that is not currently in the active
+     view hierarchy. The result is undefined.
+
+     
      - becomeFirstResponder
      Asks UIKit to make this object the first responder in its window.
+     
+     Call this method when you want the current object to be the first responder.
+     Calling this method is not a guarantee that the object will become the first
+     responder. UIKit asks the current first responder to resign as first responder,
+     which it might not. If it does, UIKit calls this object's canBecomeFirstResponder
+     method, which returns NO by default. If this object succeeds in becoming
+     the first responder, subsequent events targeting the first responder are
+     delivered to this object first and UIKit attempts to display the object's
+     input view, if any.
+     
+     Never call this method on a view that is not part of an active view hierarchy.
+     You can determine whether the view is onscreen, by checking its window
+     property. If that property contains a valid window, it is part of an active
+     view hierarchy. If that property is nil, the view is not part of a valid
+     view hierarchy.
+     
+     You can override this method in your custom responders to update your object's
+     state or perform some action such as highlighting the selection. If you
+     override this method, you must call super at some point in your implementation.
+     
      
      - canResignFirstResponder
      Returns a Boolean value indicating whether the receiver is willing
@@ -267,6 +309,7 @@
      Notifies this object that it has been asked to relinquish its status
      as first responder in its window.
      */
+    
     
     /**
      Responding to Touch Events
@@ -1574,7 +1617,11 @@
 }
 
 
-
+- (UIResponder *)nextResponder {
+    [super nextResponder];
+    
+    return self;
+}
 
 
 /*

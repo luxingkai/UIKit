@@ -48,21 +48,27 @@
     self.navigationItem.rightBarButtonItem = segmentBarItem;
     
     
+    
 #pragma mark -- Customize the Title View
     
     self.navigationItem.titleView = segmentControl;
+    
     
     
 #pragma mark -- Modify the Navigation Prompt
     
 //    self.navigationItem.prompt = NSLocalizedString(@"Navigation prompts appear at the top.", @"");
     
+    
 #pragma mark -- Customize the Navigation Bar Appearance
     
     [self.navigationBar setBackgroundImage:[UIImage imageNamed:@""] forBarMetrics:UIBarMetricsDefault];
     [self.navigationBar setBackgroundImage:[UIImage imageNamed:@""] forBarMetrics:UIBarMetricsCompact];
     
+    
 #pragma mark -- Customize Back Button Titles
+    
+    
     
 #pragma mark -- Customize the Back Button with an Image
     
@@ -79,9 +85,11 @@
     self.navigationItem.backBarButtonItem = backBarButton;
     
     
+    
 #pragma mark -- Modify the Large Title in the Navigation Bar
     
 //    self.navigationBar.prefersLargeTitles = true;
+    
     
     
 #pragma mark -- Change Navigation Bar Appearance
@@ -108,11 +116,13 @@
     self.navigationItem.compactAppearance.doneButtonAppearance = doneButtonAppearance;
     
     
+    
 #pragma mark -- Attach a Menu to a Bar Button Item
     
 //    UIMenu *barButtonMenu = [UIMenu menuWithTitle:@"" children:@[[UIAction actionWithTitle:NSLocalizedString(@"Copy", @"") image:nil identifier:nil handler:nil]]];
 //    self.navigationItem.menu = barButtonMenu;
      
+    
     
     
     

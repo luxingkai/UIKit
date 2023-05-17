@@ -24,14 +24,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     TabBarViewController *vc = [TabBarViewController new];
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appLifeCycleStateChange) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+    
     return YES;
 }
+
+- (void)appLifeCycleStateChange {
+    
+}
+
 
 
 #pragma mark - UISceneSession lifecycle

@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ViewLayout : UIViewController
 
+- (NSString *)constraintWithTargetViews:(UIView *)Views __attribute__((warn_unused_result));
 @end
 
 NS_ASSUME_NONNULL_END

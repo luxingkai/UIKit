@@ -96,7 +96,7 @@
 //    flowLayout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
 //    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
 //    TouchesPressesGestures *rotateVC = [[TouchesPressesGestures alloc] initWithCollectionViewLayout:flowLayout];
-    ViewsAndControls *vc = [ViewsAndControls new];
+    ViewLayout *vc = [ViewLayout new];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     nav.tabBarItem.title = @"旋转控制";
     nav.tabBarItem.image = [[UIImage imageNamed:@"moai"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
