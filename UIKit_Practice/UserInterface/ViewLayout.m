@@ -18,16 +18,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = UIColor.whiteColor;
-    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.view.autoresizesSubviews = YES;
+//    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//    self.view.autoresizesSubviews = YES;
     
 //    self.subView = [UIView new];
 //    self.subView.backgroundColor = UIColor.redColor;
 //    self.subView.translatesAutoresizingMaskIntoConstraints = NO;
 //    [self.view addSubview:self.subView];
     
+    NSArray *range = @[@0.0, @10.0, @20.0, @30.0, @40.0, @50.0, @60.0, @70.0, @80.0, @90.0, @100.0, @110.0];
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
-    DrawLineView *lineView = [[DrawLineView alloc] initWithFrame:CGRectMake(0, 100, width, 200)];
+    DrawLineView *lineView = [[DrawLineView alloc] initWithFrame:CGRectMake(24, 100, width - 48, 200)];
+    lineView.range = range;
     lineView.backgroundColor = UIColor.whiteColor;
     [self.view addSubview:lineView];
     

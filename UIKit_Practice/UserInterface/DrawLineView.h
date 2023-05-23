@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DrawLineView : UIView
 
+/// 滑动范围
+@property (nonatomic, copy) NSArray *range;
+
 @end
 
 NS_ASSUME_NONNULL_END
