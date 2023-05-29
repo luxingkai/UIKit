@@ -60,6 +60,7 @@
 		11C3B1E72732908200F4FC1F /* 1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 11C3B1E62732908200F4FC1F /* 1.gif */; };
 		11C3B1E9273293ED00F4FC1F /* 2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 11C3B1E8273293ED00F4FC1F /* 2.gif */; };
 		11EAE0F625314AD300806F15 /* CustomizerNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EAE0F525314AD300806F15 /* CustomizerNavigationController.m */; };
+		2F938BF82A24B4DD002040C0 /* DrawLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 877A9B5B29E9B5A400987C28 /* DrawLineView.m */; };
 		877A9B5C29E9B5A400987C28 /* DrawLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 877A9B5B29E9B5A400987C28 /* DrawLineView.m */; };
 /* End PBXBuildFile section */
 
@@ -594,6 +595,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F938BF82A24B4DD002040C0 /* DrawLineView.m in Sources */,
 				11A4EBD2246646BF004B1009 /* UIKit_PracticeUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
