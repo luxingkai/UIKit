@@ -15,6 +15,206 @@
 #define AXIS_Y 20.0
 #endif
 
+@interface CALayer (LayerExtension)
+@property (nonatomic) CGFloat height;
+@property (nonatomic) CGFloat width;
+@property (nonatomic) CGFloat left;
+@property (nonatomic) CGFloat top;
+@property (nonatomic) CGFloat right;
+@property (nonatomic) CGFloat bottom;
+@property (nonatomic) CGFloat centerY;
+@property (nonatomic) CGFloat centerX;
+@end
+
+@implementation CALayer (LayerExtension)
+
+- (void)setWidth:(CGFloat)width
+{
+    CGRect frame = self.frame;
+    frame.size.width = width;
+    self.frame = CGRectStandardize(frame);
+}
+
+- (CGFloat)width
+{
+    return self.frame.size.width;
+}
+
+- (void)setHeight:(CGFloat)height
+{
+    CGRect frame = self.frame;
+    frame.size.height = height;
+    self.frame = CGRectStandardize(frame);
+}
+
+- (CGFloat)height
+{
+    return self.frame.size.height;
+}
+
+- (void)setLeft:(CGFloat)left
+{
+    CGRect frame = self.frame;
+    frame.origin.x = left;
+    self.frame = CGRectStandardize(frame);
+}
+
+- (CGFloat)left
+{
+    return self.frame.origin.x;
+}
+
+- (void)setTop:(CGFloat)top
+{
+    CGRect frame = self.frame;
+    frame.origin.y = top;
+    self.frame = CGRectStandardize(frame);
+}
+
+- (CGFloat)top
+{
+    return self.frame.origin.y;
+}
+
+- (void)setRight:(CGFloat)right
+{
+    CGRect frame = self.frame;
+    frame.origin.x = right - frame.size.width;
+    self.frame = CGRectStandardize(frame);
+}
+
+- (CGFloat)right
+{
+    return self.frame.origin.x + self.frame.size.width;
+}
+
+- (void)setBottom:(CGFloat)bottom
+{
+    CGRect frame = self.frame;
+    frame.origin.y = bottom - frame.size.height;
+    self.frame = CGRectStandardize(frame);
+}
+
+- (CGFloat)bottom
+{
+    return self.frame.origin.y + self.frame.size.height;
+}
+
+@end
+
+@interface UIView (UIExtension)
+@property (nonatomic) CGFloat height;
+@property (nonatomic) CGFloat width;
+@property (nonatomic) CGFloat left;
+@property (nonatomic) CGFloat top;
+@property (nonatomic) CGFloat right;
+@property (nonatomic) CGFloat bottom;
+@property (nonatomic) CGFloat centerY;
+@property (nonatomic) CGFloat centerX;
+@end
+
+@implementation UIView (UIExtension)
+
+- (void)setWidth:(CGFloat)width
+{
+    CGRect frame = self.frame;
+    frame.size.width = width;
+    self.frame = CGRectStandardize(frame);
+}
+
+- (CGFloat)width
+{
+    return self.frame.size.width;
+}
+
+- (void)setHeight:(CGFloat)height
+{
+    CGRect frame = self.frame;
+    frame.size.height = height;
+    self.frame = CGRectStandardize(frame);
+}
+
+- (CGFloat)height
+{
+    return self.frame.size.height;
+}
+
+- (void)setLeft:(CGFloat)left
+{
+    CGRect frame = self.frame;
+    frame.origin.x = left;
+    self.frame = CGRectStandardize(frame);
+}
+
+- (CGFloat)left
+{
+    return self.frame.origin.x;
+}
+
+- (void)setTop:(CGFloat)top
+{
+    CGRect frame = self.frame;
+    frame.origin.y = top;
+    self.frame = CGRectStandardize(frame);
+}
+
+- (CGFloat)top
+{
+    return self.frame.origin.y;
+}
+
+- (void)setRight:(CGFloat)right
+{
+    CGRect frame = self.frame;
+    frame.origin.x = right - frame.size.width;
+    self.frame = CGRectStandardize(frame);
+}
+
+- (CGFloat)right
+{
+    return self.frame.origin.x + self.frame.size.width;
+}
+
+- (void)setBottom:(CGFloat)bottom
+{
+    CGRect frame = self.frame;
+    frame.origin.y = bottom - frame.size.height;
+    self.frame = CGRectStandardize(frame);
+}
+
+- (CGFloat)bottom
+{
+    return self.frame.origin.y + self.frame.size.height;
+}
+
+- (void)setCenterY:(CGFloat)centerY
+{
+    CGPoint center = self.center;
+    center.y = centerY;
+    self.center = center;
+}
+
+- (CGFloat)centerY
+{
+    return self.center.y;
+}
+
+- (void)setCenterX:(CGFloat)centerX
+{
+    CGPoint center = self.center;
+    center.x = centerX;
+    self.center = center;
+}
+
+- (CGFloat)centerX
+{
+    return self.center.x;
+}
+
+
+@end
+
+
 @interface DrawLineView()
 /// 左滑块
 @property (nonatomic, strong) UIImageView *l_slideView;
@@ -22,11 +222,14 @@
 @property (nonatomic, strong) UIImageView *r_slideView;
 /// 初始位置
 @property (nonatomic, assign) CGPoint initialCenter;
+/// 滑块滑动到指定位置的线条的起始位置
+@property (nonatomic, assign) CGFloat line_left;
 /// 左滑块指定的刻度节点
 @property (nonatomic, strong) UIView *l_node;
 /// 右滑块指定的刻度节点
 @property (nonatomic, strong) UIView *r_node;
-
+///
+@property (nonatomic, strong) CAShapeLayer *scaleline;
 
 @end
 
@@ -45,6 +248,12 @@
         self.r_slideView.image = [UIImage imageNamed:@"os_slider"];
         self.r_slideView.userInteractionEnabled = true;
         [self addSubview:self.r_slideView];
+        
+        ///
+        self.scaleline = [CAShapeLayer layer];
+        self.scaleline.frame = CGRectMake(9, AXIS_Y, 50, 4);
+        self.scaleline.backgroundColor = [self colorHex:0xFF0000].CGColor;
+        [self.layer addSublayer:self.scaleline];
         
         UIPanGestureRecognizer *minPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(minPan:)];
         [self.l_slideView addGestureRecognizer:minPanGesture];
@@ -81,7 +290,6 @@
     CGContextSetLineWidth(context, scale_line_h);
     
     CGContextStrokePath(context);
-    
     CGPathRelease(axisPath);
     
     /// 刻度
@@ -100,7 +308,6 @@
         CGContextSetLineWidth(context, 1);
         
         CGContextStrokePath(context);
-        
         CGPathRelease(scalePath);
         
         /// 每个刻度对应的数值
@@ -108,7 +315,7 @@
         NSString *singleScala = [NSString stringWithFormat:@"%@",self.range[i]];
         CGFloat scale_text_w = [self widthForScaleValue:singleScala];
         CATextLayer *textLayer = [CATextLayer layer];
-        textLayer.frame = CGRectMake(i * (scale_line_w + scale_inset_w), 0, scale_text_w, 14);
+        textLayer.frame = CGRectMake(i * (scale_line_w + scale_inset_w) - scale_text_w / 2.0, 0, scale_text_w, 14);
         textLayer.string = singleScala;
         textLayer.font = CFBridgingRetain([UIFont systemFontOfSize:10 weight:UIFontWeightMedium]);
         textLayer.fontSize = 10;
@@ -116,10 +323,51 @@
         textLayer.contentsScale = [UIScreen mainScreen].scale;
         [self.layer addSublayer:textLayer];
     }
-    
 }
 
 - (void)minPan:(UIPanGestureRecognizer *)gesture {
+    if (gesture.view == nil) return;
+    UIView *piece = gesture.view;
+    // Get the changes in the X and Y directions relative to
+    // the superview's coordinate space.
+    CGPoint translation = [gesture translationInView:piece.superview];
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        // Save the view's original position.
+        self.initialCenter = piece.center;
+        self.line_left = self.scaleline.left;
+    }
+    
+    // Update the position for the .began, .changed, and .ended states
+    if (gesture.state != UIGestureRecognizerStateCancelled) {
+        // Add the X and Y translation to the view's original position.
+        float pow_c = powf(translation.y, 2.0) + powf(translation.x, 2.0);
+        float c = sqrtf(pow_c);
+        float arc = asinf(translation.y / c);
+        float limit = M_PI / 6;
+        /// 拖动滑块的最大倾斜角为30°
+        if (-limit <= arc && arc <= limit) {
+            piece.center = CGPointMake(self.initialCenter.x + translation.x, self.initialCenter.y);
+            /// 根据滑块滑动位置显示的线条
+            self.scaleline.frame = CGRectMake(self.line_left + translation.x, AXIS_Y, self.scaleline.width, self.scaleline.height);
+            /// 超出视图范围不准滑动
+            if (piece.center.x < 9.0) {
+                piece.centerX = 9.0;
+                self.scaleline.frame = CGRectMake(0, AXIS_Y, self.scaleline.width, self.scaleline.height);
+            }
+            if (piece.centerX > self.width - 9.0) {
+                self.scaleline.frame = CGRectMake(self.width, AXIS_Y, self.scaleline.width, self.scaleline.height);
+            }
+            
+        }
+        
+    } else {
+        // On cancellation, return the piece to its original location.
+        piece.center = self.initialCenter;
+    }
+    
+}
+
+- (void)maxPan:(UIPanGestureRecognizer *)gesture {
     if (gesture.view == nil) return;
     UIView *piece = gesture.view;
     // Get the changes in the X and Y directions relative to
@@ -132,30 +380,28 @@
     
     // Update the position for the .began, .changed, and .ended states
     if (gesture.state != UIGestureRecognizerStateCancelled) {
-        /// 超出视图范围不准滑动
-        NSUInteger integer_part = ceil(piece.center.x);
-        printf("%lu\n",(unsigned long)integer_part);
-//        if (integer_part >= 9 && integer_part <= (self.frame.size.width - 9)) {
-            // Add the X and Y translation to the view's original position.
-            float pow_c = powf(translation.y, 2.0) + powf(translation.x, 2.0);
-            float c = sqrtf(pow_c);
-            float arc = asinf(translation.y / c);
-            float limit = M_PI / 6;
-            ///
-            if (-limit <= arc && arc <= limit) {
-                CGPoint newCenter = CGPointMake(self.initialCenter.x + translation.x, self.initialCenter.y);
-                piece.center = newCenter;
+        // Add the X and Y translation to the view's original position.
+        float pow_c = powf(translation.y, 2.0) + powf(translation.x, 2.0);
+        float c = sqrtf(pow_c);
+        float arc = asinf(translation.y / c);
+        float limit = M_PI / 6;
+        /// 拖动滑块的最大倾斜角为30°
+        if (-limit <= arc && arc <= limit) {
+            piece.center = CGPointMake(self.initialCenter.x + translation.x, self.initialCenter.y);
+            /// 超出视图范围不准滑动
+            if (piece.center.x < 9.0) {
+                piece.centerX = 9.0;
             }
-//        }
+            if (piece.centerX > self.width - 9.0) {
+                piece.centerX = self.width - 9.0;
+            }
+
+        }
         
     } else {
         // On cancellation, return the piece to its original location.
         piece.center = self.initialCenter;
     }
-    
-}
-
-- (void)maxPan:(UIPanGestureRecognizer *)gesture {
     
 }
 
@@ -174,7 +420,6 @@
 }
 
 - (void)dealloc {
-    
 }
 
 @end
